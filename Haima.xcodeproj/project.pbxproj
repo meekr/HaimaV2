@@ -17,6 +17,13 @@
 		C274364615371BC5002B1372 /* jiaoshi.png in Resources */ = {isa = PBXBuildFile; fileRef = C274363F15371BC5002B1372 /* jiaoshi.png */; };
 		C274364915372244002B1372 /* feature-detail-frame-close.png in Resources */ = {isa = PBXBuildFile; fileRef = C274364715372244002B1372 /* feature-detail-frame-close.png */; };
 		C274364A15372244002B1372 /* feature-detail-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C274364815372244002B1372 /* feature-detail-frame.png */; };
+		C274365115373A08002B1372 /* calculator.html in Resources */ = {isa = PBXBuildFile; fileRef = C274364C15373A08002B1372 /* calculator.html */; };
+		C274365215373A08002B1372 /* config.html in Resources */ = {isa = PBXBuildFile; fileRef = C274364D15373A08002B1372 /* config.html */; };
+		C274365315373A08002B1372 /* jquery-1.6.4.min.jss in Resources */ = {isa = PBXBuildFile; fileRef = C274364E15373A08002B1372 /* jquery-1.6.4.min.jss */; };
+		C274365415373A08002B1372 /* script.jss in Resources */ = {isa = PBXBuildFile; fileRef = C274364F15373A08002B1372 /* script.jss */; };
+		C274365515373A08002B1372 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = C274365015373A08002B1372 /* style.css */; };
+		C274365815373AC8002B1372 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C274365715373AC8002B1372 /* CalculatorViewController.m */; };
+		C274365B15373E0F002B1372 /* MaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C274365A15373E0F002B1372 /* MaintenanceViewController.m */; };
 		C276DAA81533DD49003E9CDC /* MenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C276DAA71533DD49003E9CDC /* MenuBar.m */; };
 		C276DAAC1533E154003E9CDC /* MenuBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C276DAAB1533E154003E9CDC /* MenuBarViewController.m */; };
 		C27D99501535181D006305E0 /* BackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D994F1535181D006305E0 /* BackgroundViewController.m */; };
@@ -86,6 +93,15 @@
 		C274363F15371BC5002B1372 /* jiaoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiaoshi.png; sourceTree = "<group>"; };
 		C274364715372244002B1372 /* feature-detail-frame-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feature-detail-frame-close.png"; sourceTree = "<group>"; };
 		C274364815372244002B1372 /* feature-detail-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feature-detail-frame.png"; sourceTree = "<group>"; };
+		C274364C15373A08002B1372 /* calculator.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = calculator.html; sourceTree = "<group>"; };
+		C274364D15373A08002B1372 /* config.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = config.html; sourceTree = "<group>"; };
+		C274364E15373A08002B1372 /* jquery-1.6.4.min.jss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "jquery-1.6.4.min.jss"; sourceTree = "<group>"; };
+		C274364F15373A08002B1372 /* script.jss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = script.jss; sourceTree = "<group>"; };
+		C274365015373A08002B1372 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		C274365615373AC8002B1372 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		C274365715373AC8002B1372 /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
+		C274365915373E0F002B1372 /* MaintenanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintenanceViewController.h; sourceTree = "<group>"; };
+		C274365A15373E0F002B1372 /* MaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceViewController.m; sourceTree = "<group>"; };
 		C276DAA61533DD49003E9CDC /* MenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBar.h; sourceTree = "<group>"; };
 		C276DAA71533DD49003E9CDC /* MenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBar.m; sourceTree = "<group>"; };
 		C276DAAA1533E154003E9CDC /* MenuBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBarViewController.h; sourceTree = "<group>"; };
@@ -180,6 +196,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C274364B15373A08002B1372 /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				C274364C15373A08002B1372 /* calculator.html */,
+				C274364D15373A08002B1372 /* config.html */,
+				C274364E15373A08002B1372 /* jquery-1.6.4.min.jss */,
+				C274364F15373A08002B1372 /* script.jss */,
+				C274365015373A08002B1372 /* style.css */,
+			);
+			path = Html;
+			sourceTree = "<group>";
+		};
 		C27F586D1536CAAB00DC14C7 /* tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +287,7 @@
 			children = (
 				C2FF06DF15330D1200BD97EE /* Classes */,
 				C2FF06E015330D1200BD97EE /* Controllers */,
+				C274364B15373A08002B1372 /* Html */,
 				C2FF06E9153318D700BD97EE /* Images */,
 				C2FF06E115330D1200BD97EE /* Models */,
 				C2FF06E215330D1200BD97EE /* Views */,
@@ -313,6 +342,10 @@
 				C288516F1535740B0010D936 /* UserGroupViewController.m */,
 				C28851711535743F0010D936 /* ProductAdvantageViewController.h */,
 				C2885172153574400010D936 /* ProductAdvantageViewController.m */,
+				C274365615373AC8002B1372 /* CalculatorViewController.h */,
+				C274365715373AC8002B1372 /* CalculatorViewController.m */,
+				C274365915373E0F002B1372 /* MaintenanceViewController.h */,
+				C274365A15373E0F002B1372 /* MaintenanceViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -465,6 +498,11 @@
 				C274364615371BC5002B1372 /* jiaoshi.png in Resources */,
 				C274364915372244002B1372 /* feature-detail-frame-close.png in Resources */,
 				C274364A15372244002B1372 /* feature-detail-frame.png in Resources */,
+				C274365115373A08002B1372 /* calculator.html in Resources */,
+				C274365215373A08002B1372 /* config.html in Resources */,
+				C274365315373A08002B1372 /* jquery-1.6.4.min.jss in Resources */,
+				C274365415373A08002B1372 /* script.jss in Resources */,
+				C274365515373A08002B1372 /* style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +531,8 @@
 				C2B66CFF1535DD33006D5E88 /* ProductFeatureCategory.m in Sources */,
 				C2B66D021535DD5B006D5E88 /* ProductFeatureItem.m in Sources */,
 				C2B66D051535DED1006D5E88 /* DataUtil.m in Sources */,
+				C274365815373AC8002B1372 /* CalculatorViewController.m in Sources */,
+				C274365B15373E0F002B1372 /* MaintenanceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

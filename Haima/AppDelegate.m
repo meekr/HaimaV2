@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "BackgroundViewController.h"
 #import "CustomTabBarViewController.h"
+#import "MaintenanceViewController.h"
+#import "CalculatorViewController.h"
 
 @implementation AppDelegate
 
@@ -35,6 +37,14 @@
     [bvc release];
     
     [self.window makeKeyAndVisible];
+    
+    // pre-initialize html views
+    MaintenanceViewController *vc1 = [[[MaintenanceViewController alloc] init] autorelease];
+    UIView *view = vc1.view;
+    
+    CalculatorViewController *vc2 = [[[CalculatorViewController alloc] init] autorelease];
+    view = vc2.view;
+    
     return YES;
 }
 
