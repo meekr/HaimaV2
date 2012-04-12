@@ -6,13 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TreeMenu.h"
 
-@interface ProductAdvantageViewController : UIViewController
+@interface ProductAdvantageViewController : UIViewController<TreeMenuDelegate>
 {
     
 }
 
 @property (nonatomic, retain)UIView *homeScreen;
+@property (nonatomic, retain)TreeMenu *featureMenu;
 
 @end

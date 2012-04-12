@@ -7,10 +7,12 @@
 //
 
 #import "ProductAdvantageViewController.h"
+#import "DataController.h"
 
 @implementation ProductAdvantageViewController
 
 @synthesize homeScreen = _homeScreen;
+@synthesize featureMenu = _featureMenu;
 
 - (void)loadView
 {
@@ -38,6 +40,7 @@
     button.backgroundColor = [UIColor clearColor];
     [button setBackgroundImage:[UIImage imageNamed:@"product-navigate-button-manifest"] forState:UIControlStateNormal];
     [button setShowsTouchWhenHighlighted:YES];
+    [button addTarget:self action:@selector(button1Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.homeScreen addSubview:button];
     [button release];
     
@@ -45,6 +48,7 @@
     button.backgroundColor = [UIColor clearColor];
     [button setBackgroundImage:[UIImage imageNamed:@"product-navigate-button-control"] forState:UIControlStateNormal];
     [button setShowsTouchWhenHighlighted:YES];
+    [button addTarget:self action:@selector(button2Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.homeScreen addSubview:button];
     [button release];
     
@@ -52,6 +56,7 @@
     button.backgroundColor = [UIColor clearColor];
     [button setBackgroundImage:[UIImage imageNamed:@"product-navigate-button-safety"] forState:UIControlStateNormal];
     [button setShowsTouchWhenHighlighted:YES];
+    [button addTarget:self action:@selector(button3Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.homeScreen addSubview:button];
     [button release];
     
@@ -59,14 +64,85 @@
     button.backgroundColor = [UIColor clearColor];
     [button setBackgroundImage:[UIImage imageNamed:@"product-navigate-button-quality"] forState:UIControlStateNormal];
     [button setShowsTouchWhenHighlighted:YES];
+    [button addTarget:self action:@selector(button4Action:) forControlEvents:UIControlEventTouchUpInside];
     [self.homeScreen addSubview:button];
     [button release];
+    
+    // feature menu
+    self.featureMenu = [[[TreeMenu alloc] initWithFrame:CGRectMake(280, 170, 400, 400)] autorelease];
+    self.featureMenu.alpha = 0;
+    self.featureMenu.delegate = self;
+    [self.view addSubview:self.featureMenu];
+}
+
+- (void)presentFeatureMenu
+{
+    [UIView animateWithDuration:.2
+                          delay:0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         self.homeScreen.alpha = 0;
+                         self.featureMenu.alpha = 1;
+                         self.featureMenu.frame = CGRectMake(0, self.featureMenu.frame.origin.y, self.featureMenu.frame.size.width, self.featureMenu.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+- (void)button1Action:(UIButton*)button
+{
+    ProductFeature *feature = [[DataController sharedDataController] getFeatureByIndex:0];
+    self.featureMenu.feature = feature;
+    [self presentFeatureMenu];
+}
+
+- (void)button2Action:(UIButton*)button
+{
+    ProductFeature *feature = [[DataController sharedDataController] getFeatureByIndex:1];
+    self.featureMenu.feature = feature;
+    [self presentFeatureMenu];
+}
+
+- (void)button3Action:(UIButton*)button
+{
+    ProductFeature *feature = [[DataController sharedDataController] getFeatureByIndex:2];
+    self.featureMenu.feature = feature;
+    [self presentFeatureMenu];
+}
+
+- (void)button4Action:(UIButton*)button
+{
+    ProductFeature *feature = [[DataController sharedDataController] getFeatureByIndex:3];
+    self.featureMenu.feature = feature;
+    [self presentFeatureMenu];
 }
 
 - (void)dealloc
 {
     [_homeScreen release];
+    [_featureMenu release];
     [super dealloc];
+}
+
+
+#pragma mark - TreeMenuDelegate
+- (void)returnToHome
+{
+    [UIView animateWithDuration:.2
+                          delay:0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         self.homeScreen.alpha = 1;
+                         self.featureMenu.alpha = 0;
+                         self.featureMenu.frame = CGRectMake(280, self.featureMenu.frame.origin.y, self.featureMenu.frame.size.width, self.featureMenu.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+- (void)showDetailForFeatureItem:(ProductFeatureItem *)featureItem
+{
+    
 }
 
 @end
