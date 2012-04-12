@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserGroupViewController : UIViewController
+@interface UserGroupViewController : UIViewController<UIScrollViewDelegate>
+{
+    UIScrollView *_scrollView;
+    UIImageView *_detailInfo;
+    
+    CGSize _szDetailPanel;
+    CGPoint _ptDetailStart;
+    CGPoint _ptDetailEnd;
+}
 
 @end
