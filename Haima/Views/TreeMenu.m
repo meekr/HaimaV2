@@ -214,14 +214,17 @@
 {
     UIView *itemContainer = [button superview];
     int cateIndex = [_categoryItemContainers indexOfObject:itemContainer];
+    ProductFeatureItem *item;
     if (cateIndex >= 0 && cateIndex < _categoryItemContainers.count) {
         int itemIndex = [itemContainer.subviews indexOfObject:button];
-        NSLog(@"categoryIndex: %d, itemIndex: %d", cateIndex, itemIndex);
+        ProductFeatureCategory *category = [_feature.categories objectAtIndex:cateIndex];
+        item = [category.items objectAtIndex:itemIndex];
     }
     else {
         int itemIndex = [_itemViews indexOfObject:button];
-        NSLog(@"itemIndex: %d", itemIndex);
+        item = [_feature.items objectAtIndex:itemIndex];
     }
+    [delegate showDetailForFeatureItem:item];
 }
 
 - (void)layoutSubviews

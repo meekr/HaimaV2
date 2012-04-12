@@ -13,6 +13,7 @@
 
 @synthesize homeScreen = _homeScreen;
 @synthesize featureMenu = _featureMenu;
+@synthesize featureDetail = _featureDetail;
 
 - (void)loadView
 {
@@ -68,11 +69,35 @@
     [self.homeScreen addSubview:button];
     [button release];
     
+    
     // feature menu
     self.featureMenu = [[[TreeMenu alloc] initWithFrame:CGRectMake(280, 170, 400, 400)] autorelease];
     self.featureMenu.alpha = 0;
     self.featureMenu.delegate = self;
     [self.view addSubview:self.featureMenu];
+    
+    
+    // feature item detail
+    self.featureDetail = [[[UIImageView alloc] initWithFrame:CGRectMake(340, 150, 500, 360)] autorelease];
+    self.featureDetail.image = [[UIImage imageNamed:@"feature-detail-frame"] stretchableImageWithLeftCapWidth:240 topCapHeight:60];
+    self.featureDetail.userInteractionEnabled = YES;
+    self.featureDetail.alpha = 0;
+    [self.view addSubview:self.featureDetail];
+    
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(20, 67, self.featureDetail.frame.size.width-30, self.featureDetail.frame.size.height-80)] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont systemFontOfSize:18];
+    label.textColor = [UIColor darkGrayColor];
+    label.numberOfLines = 0;
+    [label sizeToFit];
+    [self.featureDetail addSubview:label];
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeButton.frame = CGRectMake(self.featureDetail.frame.size.width - 24, -18, 44, 44);
+    closeButton.showsTouchWhenHighlighted = YES;
+    [closeButton setImage:[UIImage imageNamed:@"feature-detail-frame-close"] forState:UIControlStateNormal];
+    [closeButton addTarget:self action:@selector(closeDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.featureDetail addSubview:closeButton];
 }
 
 - (void)presentFeatureMenu
@@ -117,10 +142,22 @@
     [self presentFeatureMenu];
 }
 
+- (void)closeDetailAction:(UIButton*)button {
+    [UIView animateWithDuration:.2
+                          delay:0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         self.featureDetail.alpha = 0;
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
 - (void)dealloc
 {
     [_homeScreen release];
     [_featureMenu release];
+    [_featureDetail release];
     [super dealloc];
 }
 
@@ -128,6 +165,8 @@
 #pragma mark - TreeMenuDelegate
 - (void)returnToHome
 {
+    [self closeDetailAction:nil];
+    
     [UIView animateWithDuration:.2
                           delay:0
                         options:UIViewAnimationCurveEaseInOut
@@ -142,7 +181,22 @@
 
 - (void)showDetailForFeatureItem:(ProductFeatureItem *)featureItem
 {
+    UILabel *label = [self.featureDetail.subviews objectAtIndex:0];
+    label.text = featureItem.description;
+    label.frame = CGRectMake(20, 67, self.featureDetail.frame.size.width-30, self.featureDetail.frame.size.height-80);
+    label.numberOfLines = 0;
+    [label sizeToFit];
     
+    if (self.featureDetail.alpha == 0) {
+        [UIView animateWithDuration:.2
+                              delay:0
+                            options:UIViewAnimationCurveEaseInOut
+                         animations:^{
+                             self.featureDetail.alpha = 1;
+                         }
+                         completion:^(BOOL finished){
+                         }];
+    }
 }
 
 @end

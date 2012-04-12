@@ -13,7 +13,8 @@
     
 }
 
-@property (nonatomic, retain)UIView *homeScreen;
-@property (nonatomic, retain)TreeMenu *featureMenu;
+@property (nonatomic, retain) UIView *homeScreen;
+@property (nonatomic, retain) TreeMenu *featureMenu;
+@property (nonatomic, retain) UIImageView *featureDetail;
 
 @end
