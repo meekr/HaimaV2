@@ -18,6 +18,8 @@
     self.view = view;
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"html"];
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
 	webView.delegate = self;

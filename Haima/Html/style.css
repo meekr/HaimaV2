@@ -1,5 +1,6 @@
 body {
 	background:url(pbg.png) no-repeat;
+    background-color:transparent;
 	color: black;
 	font-family:'arial',serif;
 	font-size:14px;
@@ -47,9 +48,6 @@ h1#calc{
 /********
 -- config --
 *********/
-body.config{
-	background-color:#dedede;
-}
 h1#config{
 	height:68px;
 	margin:0 0 0 58px;
