@@ -63,6 +63,16 @@
 		C288517C153576F10010D936 /* product-navigate-button-manifest.png in Resources */ = {isa = PBXBuildFile; fileRef = C2885177153576F10010D936 /* product-navigate-button-manifest.png */; };
 		C288517D153576F10010D936 /* product-navigate-button-quality.png in Resources */ = {isa = PBXBuildFile; fileRef = C2885178153576F10010D936 /* product-navigate-button-quality.png */; };
 		C288517E153576F10010D936 /* product-navigate-button-safety.png in Resources */ = {isa = PBXBuildFile; fileRef = C2885179153576F10010D936 /* product-navigate-button-safety.png */; };
+		C29E97291537DAFB007BDDDB /* champion-road.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97281537DAFB007BDDDB /* champion-road.png */; };
+		C29E972C1537DB38007BDDDB /* ChampionRoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29E972B1537DB38007BDDDB /* ChampionRoadViewController.m */; };
+		C29E972F1537DC92007BDDDB /* StarDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29E972E1537DC92007BDDDB /* StarDriverViewController.m */; };
+		C29E97351537DF57007BDDDB /* star-driver-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97301537DF57007BDDDB /* star-driver-1.png */; };
+		C29E97361537DF57007BDDDB /* star-driver-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97311537DF57007BDDDB /* star-driver-2.png */; };
+		C29E97371537DF57007BDDDB /* star-driver-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97321537DF57007BDDDB /* star-driver-3.png */; };
+		C29E97381537DF57007BDDDB /* star-driver-4.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97331537DF57007BDDDB /* star-driver-4.png */; };
+		C29E97391537DF57007BDDDB /* star-driver-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E97341537DF57007BDDDB /* star-driver-bg.png */; };
+		C29E973B153809F0007BDDDB /* price-table-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E973A153809F0007BDDDB /* price-table-bg.png */; };
+		C29E973D15380C7C007BDDDB /* price-table-content.png in Resources */ = {isa = PBXBuildFile; fileRef = C29E973C15380C7C007BDDDB /* price-table-content.png */; };
 		C2B66CF21535CCF6006D5E88 /* TreeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B66CF11535CCF6006D5E88 /* TreeMenu.m */; };
 		C2B66CF51535CE1D006D5E88 /* Features.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2B66CF41535CE1D006D5E88 /* Features.plist */; };
 		C2B66CF91535D7B1006D5E88 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B66CF81535D7B1006D5E88 /* DataController.m */; };
@@ -147,6 +157,18 @@
 		C2885177153576F10010D936 /* product-navigate-button-manifest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product-navigate-button-manifest.png"; sourceTree = "<group>"; };
 		C2885178153576F10010D936 /* product-navigate-button-quality.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product-navigate-button-quality.png"; sourceTree = "<group>"; };
 		C2885179153576F10010D936 /* product-navigate-button-safety.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product-navigate-button-safety.png"; sourceTree = "<group>"; };
+		C29E97281537DAFB007BDDDB /* champion-road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champion-road.png"; sourceTree = "<group>"; };
+		C29E972A1537DB38007BDDDB /* ChampionRoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChampionRoadViewController.h; sourceTree = "<group>"; };
+		C29E972B1537DB38007BDDDB /* ChampionRoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChampionRoadViewController.m; sourceTree = "<group>"; };
+		C29E972D1537DC92007BDDDB /* StarDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarDriverViewController.h; sourceTree = "<group>"; };
+		C29E972E1537DC92007BDDDB /* StarDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarDriverViewController.m; sourceTree = "<group>"; };
+		C29E97301537DF57007BDDDB /* star-driver-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-1.png"; sourceTree = "<group>"; };
+		C29E97311537DF57007BDDDB /* star-driver-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-2.png"; sourceTree = "<group>"; };
+		C29E97321537DF57007BDDDB /* star-driver-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-3.png"; sourceTree = "<group>"; };
+		C29E97331537DF57007BDDDB /* star-driver-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-4.png"; sourceTree = "<group>"; };
+		C29E97341537DF57007BDDDB /* star-driver-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-bg.png"; sourceTree = "<group>"; };
+		C29E973A153809F0007BDDDB /* price-table-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price-table-bg.png"; sourceTree = "<group>"; };
+		C29E973C15380C7C007BDDDB /* price-table-content.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price-table-content.png"; sourceTree = "<group>"; };
 		C2B66CF01535CCF6006D5E88 /* TreeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeMenu.h; sourceTree = "<group>"; };
 		C2B66CF11535CCF6006D5E88 /* TreeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeMenu.m; sourceTree = "<group>"; };
 		C2B66CF41535CE1D006D5E88 /* Features.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Features.plist; sourceTree = "<group>"; };
@@ -246,13 +268,29 @@
 			children = (
 				C27F586D1536CAAB00DC14C7 /* tree */,
 				C27F587E1536CB6000DC14C7 /* user */,
+				C29E97271537DAFB007BDDDB /* champion */,
 				C2885175153576F10010D936 /* product-navigate-bg.png */,
 				C2885176153576F10010D936 /* product-navigate-button-control.png */,
 				C2885177153576F10010D936 /* product-navigate-button-manifest.png */,
 				C2885178153576F10010D936 /* product-navigate-button-quality.png */,
 				C2885179153576F10010D936 /* product-navigate-button-safety.png */,
+				C29E973A153809F0007BDDDB /* price-table-bg.png */,
+				C29E973C15380C7C007BDDDB /* price-table-content.png */,
 			);
 			path = page;
+			sourceTree = "<group>";
+		};
+		C29E97271537DAFB007BDDDB /* champion */ = {
+			isa = PBXGroup;
+			children = (
+				C29E97281537DAFB007BDDDB /* champion-road.png */,
+				C29E97301537DF57007BDDDB /* star-driver-1.png */,
+				C29E97311537DF57007BDDDB /* star-driver-2.png */,
+				C29E97321537DF57007BDDDB /* star-driver-3.png */,
+				C29E97331537DF57007BDDDB /* star-driver-4.png */,
+				C29E97341537DF57007BDDDB /* star-driver-bg.png */,
+			);
+			path = champion;
 			sourceTree = "<group>";
 		};
 		C2FF06AB1532F0F800BD97EE = {
@@ -346,6 +384,10 @@
 				C274365715373AC8002B1372 /* CalculatorViewController.m */,
 				C274365915373E0F002B1372 /* MaintenanceViewController.h */,
 				C274365A15373E0F002B1372 /* MaintenanceViewController.m */,
+				C29E972A1537DB38007BDDDB /* ChampionRoadViewController.h */,
+				C29E972B1537DB38007BDDDB /* ChampionRoadViewController.m */,
+				C29E972D1537DC92007BDDDB /* StarDriverViewController.h */,
+				C29E972E1537DC92007BDDDB /* StarDriverViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -503,6 +545,14 @@
 				C274365315373A08002B1372 /* jquery-1.6.4.min.jss in Resources */,
 				C274365415373A08002B1372 /* script.jss in Resources */,
 				C274365515373A08002B1372 /* style.css in Resources */,
+				C29E97291537DAFB007BDDDB /* champion-road.png in Resources */,
+				C29E97351537DF57007BDDDB /* star-driver-1.png in Resources */,
+				C29E97361537DF57007BDDDB /* star-driver-2.png in Resources */,
+				C29E97371537DF57007BDDDB /* star-driver-3.png in Resources */,
+				C29E97381537DF57007BDDDB /* star-driver-4.png in Resources */,
+				C29E97391537DF57007BDDDB /* star-driver-bg.png in Resources */,
+				C29E973B153809F0007BDDDB /* price-table-bg.png in Resources */,
+				C29E973D15380C7C007BDDDB /* price-table-content.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +583,8 @@
 				C2B66D051535DED1006D5E88 /* DataUtil.m in Sources */,
 				C274365815373AC8002B1372 /* CalculatorViewController.m in Sources */,
 				C274365B15373E0F002B1372 /* MaintenanceViewController.m in Sources */,
+				C29E972C1537DB38007BDDDB /* ChampionRoadViewController.m in Sources */,
+				C29E972F1537DC92007BDDDB /* StarDriverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

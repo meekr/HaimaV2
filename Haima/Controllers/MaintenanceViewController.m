@@ -14,24 +14,23 @@
 
 - (void)loadView
 {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)] autorelease];
+    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)];
+    view.image = [UIImage imageNamed:@"price-table-bg"];
+    view.userInteractionEnabled = YES;
     self.view = view;
+    [view release];
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    webView.backgroundColor = [UIColor clearColor];
-    webView.opaque = NO;
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"html"];
-	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
-	webView.delegate = self;
-    [self.view addSubview:webView];
+    UIScrollView *content = [[[UIScrollView alloc] initWithFrame:CGRectMake(34, 163, 963, 454)] autorelease];
+
     
-    // turn off bounce
-    for (id sv in webView.subviews){
-        if ([[sv class] isSubclassOfClass: [UIScrollView class]])
-            ((UIScrollView *)sv).bounces = NO;
-    }
+    UIImage *contentImage = [UIImage imageNamed:@"price-table-content"];
+    UIImageView *contentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentImage.size.width, contentImage.size.height)];
+    contentImageView.image = contentImage;
+    [content addSubview:contentImageView];
+    [contentImageView release];
     
-    [webView release];
+    content.contentSize = CGSizeMake(contentImage.size.width, contentImage.size.height);
+    [self.view addSubview:content];
 }
 
 - (void)dealloc

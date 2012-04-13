@@ -7,6 +7,8 @@
 //
 
 #import "ChampionViewController.h"
+#import "ChampionRoadViewController.h"
+#import "StarDriverViewController.h"
 
 @implementation ChampionViewController
 
@@ -18,11 +20,9 @@
     UIViewController *detailController2 = [[[UIViewController alloc] init] autorelease];
     detailController2.view.backgroundColor = [UIColor greenColor];
     
-    UIViewController *detailController3 = [[[UIViewController alloc] init] autorelease];
-    detailController3.view.backgroundColor = [UIColor blueColor];
+    ChampionRoadViewController *vc3 = [[[ChampionRoadViewController alloc] init] autorelease];
     
-    UIViewController *detailController4 = [[[UIViewController alloc] init] autorelease];
-    detailController4.view.backgroundColor = [UIColor cyanColor];
+    StarDriverViewController *vc4 = [[[StarDriverViewController alloc] init] autorelease];
     
     UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
     detailController5.view.backgroundColor = [UIColor yellowColor];
@@ -33,8 +33,8 @@
     NSArray *items = [[NSArray arrayWithObjects:
                        [NSDictionary dictionaryWithObjectsAndKeys:@"CTCC介绍", @"title", detailController1, @"viewController", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"7年CTCC征程", @"title", detailController2, @"viewController", nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"夺冠之路", @"title", detailController3, @"viewController", nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"四大车手", @"title", detailController4, @"viewController", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"夺冠之路", @"title", vc3, @"viewController", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"四大车手", @"title", vc4, @"viewController", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"精彩视频", @"title", detailController5, @"viewController", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"图片欣赏", @"title", detailController6, @"viewController", nil],
                        nil] retain];
