@@ -8,5 +8,11 @@
 
 
 @interface PkViewController : UIViewController
+{
+    UIButton *_comboButton;
+    UIImageView *_comboList;
+    UIScrollView *_scrollView;
+    UIView *_rightContentView;
+}
 
 @end

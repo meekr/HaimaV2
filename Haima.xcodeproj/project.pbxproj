@@ -93,6 +93,9 @@
 		C2DCA49315382AD70024D135 /* pk-right-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA48C15382AD70024D135 /* pk-right-2.png */; };
 		C2DCA49415382AD70024D135 /* pk-right-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA48D15382AD70024D135 /* pk-right-3.png */; };
 		C2DCA49515382AD70024D135 /* pk-right-4.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA48E15382AD70024D135 /* pk-right-4.png */; };
+		C2DCA499153830920024D135 /* pk-combo-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA496153830920024D135 /* pk-combo-bg.png */; };
+		C2DCA49A153830920024D135 /* pk-combo-item-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA497153830920024D135 /* pk-combo-item-selected.png */; };
+		C2DCA49B153830920024D135 /* pk-combo-list-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA498153830920024D135 /* pk-combo-list-bg.png */; };
 		C2F7EC401533B40200926313 /* IntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F7EC3F1533B40200926313 /* IntroductionViewController.m */; };
 		C2F7EC441533B53D00926313 /* ChampionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F7EC431533B53D00926313 /* ChampionViewController.m */; };
 		C2FF06BB1532F0F800BD97EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FF06BA1532F0F800BD97EE /* UIKit.framework */; };
@@ -212,6 +215,9 @@
 		C2DCA48C15382AD70024D135 /* pk-right-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-right-2.png"; sourceTree = "<group>"; };
 		C2DCA48D15382AD70024D135 /* pk-right-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-right-3.png"; sourceTree = "<group>"; };
 		C2DCA48E15382AD70024D135 /* pk-right-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-right-4.png"; sourceTree = "<group>"; };
+		C2DCA496153830920024D135 /* pk-combo-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-combo-bg.png"; sourceTree = "<group>"; };
+		C2DCA497153830920024D135 /* pk-combo-item-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-combo-item-selected.png"; sourceTree = "<group>"; };
+		C2DCA498153830920024D135 /* pk-combo-list-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-combo-list-bg.png"; sourceTree = "<group>"; };
 		C2F7EC3E1533B40200926313 /* IntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionViewController.h; sourceTree = "<group>"; };
 		C2F7EC3F1533B40200926313 /* IntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionViewController.m; sourceTree = "<group>"; };
 		C2F7EC421533B53D00926313 /* ChampionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChampionViewController.h; sourceTree = "<group>"; };
@@ -336,6 +342,9 @@
 				C2DCA48C15382AD70024D135 /* pk-right-2.png */,
 				C2DCA48D15382AD70024D135 /* pk-right-3.png */,
 				C2DCA48E15382AD70024D135 /* pk-right-4.png */,
+				C2DCA496153830920024D135 /* pk-combo-bg.png */,
+				C2DCA497153830920024D135 /* pk-combo-item-selected.png */,
+				C2DCA498153830920024D135 /* pk-combo-list-bg.png */,
 			);
 			path = pk;
 			sourceTree = "<group>";
@@ -616,6 +625,9 @@
 				C2DCA49315382AD70024D135 /* pk-right-2.png in Resources */,
 				C2DCA49415382AD70024D135 /* pk-right-3.png in Resources */,
 				C2DCA49515382AD70024D135 /* pk-right-4.png in Resources */,
+				C2DCA499153830920024D135 /* pk-combo-bg.png in Resources */,
+				C2DCA49A153830920024D135 /* pk-combo-item-selected.png in Resources */,
+				C2DCA49B153830920024D135 /* pk-combo-list-bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
