@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MenuBarViewController.h"
+@interface ChampionViewController : UIViewController
 
-@interface ChampionViewController : MenuBarViewController
+@property (nonatomic, retain) NSArray *viewControllerItems;
 
 @end

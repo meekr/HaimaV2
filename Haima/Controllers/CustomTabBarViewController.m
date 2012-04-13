@@ -11,6 +11,7 @@
 #import "ChampionViewController.h"
 #import "CalculatorViewController.h"
 #import "MaintenanceViewController.h"
+#import "PkViewController.h"
 
 #define SELECTED_VIEW_CONTROLLER_TAG 98456345
 
@@ -29,7 +30,7 @@ static NSArray* tabBarItems = nil;
         
         ChampionViewController *vc2 = [[[ChampionViewController alloc] init] autorelease];
         
-        UIViewController *detailController3 = [[[UIViewController alloc] init] autorelease];
+        PkViewController *vc3 = [[[PkViewController alloc] init] autorelease];
         
         MaintenanceViewController *vc4 = [[[MaintenanceViewController alloc] init] autorelease];
         
@@ -44,7 +45,7 @@ static NSArray* tabBarItems = nil;
         tabBarItems = [[NSArray arrayWithObjects:
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-intro", @"image", vc1, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-champion", @"image", vc2, @"viewController", nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-pk", @"image", detailController3, @"viewController", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-pk", @"image", vc3, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-maintain", @"image", vc4, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-promo", @"image", detailController5, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-calculator", @"image", vc6, @"viewController", nil],
