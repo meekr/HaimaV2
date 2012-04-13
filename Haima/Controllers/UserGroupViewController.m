@@ -53,6 +53,16 @@
     [_scrollView addGestureRecognizer:tapGesture];
     [tapGesture release];
     
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeGesture];
+    [swipeGesture release];
+    
+    swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeAction:)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeGesture];
+    [swipeGesture release];
+    
     
     //
     // detail information 554x306
@@ -121,6 +131,32 @@
                      }];
 }
 
+- (void)swipeAction:(UISwipeGestureRecognizer *)recognizer
+{
+    int currentIndex = _scrollView.contentOffset.y / 315;
+    int targetIndex = currentIndex;
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionUp)
+    {
+        if (currentIndex < 3) {
+            targetIndex++;
+            [_scrollView setContentOffset:CGPointMake(0, targetIndex*315) animated:YES];
+        }
+    }
+    else
+    {
+        if (currentIndex > 0) {
+            targetIndex--;
+            [_scrollView setContentOffset:CGPointMake(0, targetIndex*315) animated:YES];
+        }
+    }
+    
+    if (currentIndex != targetIndex) {
+        for (int i=0; i<4; i++) {
+            UIImageView *view = [_scrollView.subviews objectAtIndex:i];
+            view.alpha = (i==targetIndex ? 1 : 0.3);
+        }
+    }
+}
      
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -135,13 +171,14 @@
     [super dealloc];
 }
 
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     int currentIndex = scrollView.contentOffset.y / 315;
     for (int i=0; i<4; i++) {
         UIImageView *view = [_scrollView.subviews objectAtIndex:i];
-        view.alpha = (i==currentIndex ? 1 : 0.3);    
+        view.alpha = (i==currentIndex ? 1 : 0.3);
     }
 }
 
