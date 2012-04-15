@@ -27,71 +27,72 @@
 
 - (id)init
 {
-    //
-    // initialize view controllers
-    //
-    CtccIntroViewController *vc1 = [[[CtccIntroViewController alloc] init] autorelease];
-    
-    ChampionRouteViewController *vc2 = [[[ChampionRouteViewController alloc] init] autorelease];
-    
-    ChampionRoadViewController *vc3 = [[[ChampionRoadViewController alloc] init] autorelease];
-    
-    StarDriverViewController *vc4 = [[[StarDriverViewController alloc] init] autorelease];
-    
-    UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
-    detailController5.view.backgroundColor = [UIColor yellowColor];
-    
-    UIViewController *detailController6 = [[[UIViewController alloc] init] autorelease];
-    detailController6.view.backgroundColor = [UIColor magentaColor];
-    
-    self.viewControllerItems = [NSArray arrayWithObjects:
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"CTCC介绍", @"title",
-                                 vc1, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(345, 67, 90, 40)), @"frame",
-                                 nil],
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"7年CTCC征程", @"title",
-                                 vc2, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(445, 67, 110, 40)), @"frame",
-                                 nil],
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"夺冠之路", @"title",
-                                 vc3, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(562, 67, 74, 40)), @"frame",
-                                 nil],
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"四大车手", @"title",
-                                 vc4, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(637, 67, 85, 40)), @"frame",
-                                 nil],
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"精彩视频", @"title",
-                                 detailController5, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(723, 67, 80, 40)), @"frame",
-                                 nil],
-                                [NSDictionary dictionaryWithObjectsAndKeys:
-                                 @"图片欣赏", @"title",
-                                 detailController6, @"viewController",
-                                 NSStringFromCGRect(CGRectMake(808, 67, 90, 40)), @"frame",
-                                 nil],
-                                nil];
-    
-    //
-    // setup ui components
-    //
-    int tag = 0;
-    for (NSDictionary *dict in self.viewControllerItems) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = tag++;
-        button.frame = CGRectFromString([dict objectForKey:@"frame"]);
-        [button setTitle:[dict objectForKey:@"title"] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        [button addTarget:self action:@selector(tabTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:button];
+    if (self = [super init]) {
+        //
+        // initialize view controllers
+        //
+        CtccIntroViewController *vc1 = [[[CtccIntroViewController alloc] init] autorelease];
+        
+        ChampionRouteViewController *vc2 = [[[ChampionRouteViewController alloc] init] autorelease];
+        
+        ChampionRoadViewController *vc3 = [[[ChampionRoadViewController alloc] init] autorelease];
+        
+        StarDriverViewController *vc4 = [[[StarDriverViewController alloc] init] autorelease];
+        
+        UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
+        detailController5.view.backgroundColor = [UIColor yellowColor];
+        
+        UIViewController *detailController6 = [[[UIViewController alloc] init] autorelease];
+        detailController6.view.backgroundColor = [UIColor magentaColor];
+        
+        self.viewControllerItems = [NSArray arrayWithObjects:
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"CTCC介绍", @"title",
+                                     vc1, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(345, 67, 90, 40)), @"frame",
+                                     nil],
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"7年CTCC征程", @"title",
+                                     vc2, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(445, 67, 110, 40)), @"frame",
+                                     nil],
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"夺冠之路", @"title",
+                                     vc3, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(562, 67, 74, 40)), @"frame",
+                                     nil],
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"四大车手", @"title",
+                                     vc4, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(637, 67, 85, 40)), @"frame",
+                                     nil],
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"精彩视频", @"title",
+                                     detailController5, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(723, 67, 80, 40)), @"frame",
+                                     nil],
+                                    [NSDictionary dictionaryWithObjectsAndKeys:
+                                     @"图片欣赏", @"title",
+                                     detailController6, @"viewController",
+                                     NSStringFromCGRect(CGRectMake(808, 67, 90, 40)), @"frame",
+                                     nil],
+                                    nil];
+        
+        //
+        // setup ui components
+        //
+        int tag = 0;
+        for (NSDictionary *dict in self.viewControllerItems) {
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.tag = tag++;
+            button.frame = CGRectFromString([dict objectForKey:@"frame"]);
+            [button setTitle:[dict objectForKey:@"title"] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+            [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            [button addTarget:self action:@selector(tabTapped:) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:button];
+        }
     }
-    
     return self;
 }
 
