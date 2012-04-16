@@ -8,5 +8,8 @@
 
 
 @interface StarDriverViewController : UIViewController
+{
+    UIImageView *_driverInfoView;
+}
 
 @end

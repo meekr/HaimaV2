@@ -19,7 +19,7 @@
                       NSStringFromCGRect(CGRectMake(404, 80, 214, 284)), nil];
     for (int i=0; i<array.count; i++) {
         UIButton *button = [[[UIButton alloc] initWithFrame:CGRectFromString([array objectAtIndex:i])] autorelease];
-        button.tag = i;
+        button.tag = i+1;
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"star-driver-%d", i+1]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"star-driver-%d", i+1]] forState:UIControlStateSelected];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"star-driver-%d", i+1]] forState:UIControlStateHighlighted];
@@ -28,47 +28,44 @@
     }
     
     UIImageView *info = [[[UIImageView alloc] initWithFrame:CGRectMake(571, 20, 395, 410)] autorelease];
-    info.tag = 4;
+    info.tag = 99;
+    info.userInteractionEnabled = YES;
     info.image = [UIImage imageNamed:@"star-driver-info-bg"];
     [self.view addSubview:info];
-    
-//    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 570)];
-//    view.image = [UIImage imageNamed:@"star-driver-bg"];
-//    [self.view addSubview:view];
-//    [view release];
-    
-//    int x = 121;
-//    int y = 219;
-//    for (int i=1; i<=4; i++) {
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        button.frame = CGRectMake(x, y, 183, 268);
-//        button.tag = i;
-//        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"star-driver-%d", i]] forState:UIControlStateNormal];
-//        [button addTarget:self action:@selector(starDriverClicked:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:button];
-//        x += 198;
-//    }
+
+    UIScrollView *scroll = [[[UIScrollView alloc] initWithFrame:CGRectMake(620, 70, 303, 292)] autorelease];
+    _driverInfoView = [[UIImageView alloc] init];
+    [scroll addSubview:_driverInfoView];
+    [self.view addSubview:scroll];
 }
 
 - (void)switchDriverInfo:(UIButton *)button {
     [self.view bringSubviewToFront:button];
     for (int i=0; i<3; i++) {
-        UIButton *btn = (UIButton *)[self.view viewWithTag:i];
+        UIButton *btn = (UIButton *)[self.view viewWithTag:i+1];
         btn.alpha = 0.5;
     }
     button.alpha = 1;
+    
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"star-driver-%d-info", button.tag]];
+    _driverInfoView.image = image;
+    _driverInfoView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIScrollView *scroll = (UIScrollView *)[_driverInfoView superview];
+    scroll.contentSize = CGSizeMake(image.size.width, image.size.height);
+    [scroll scrollsToTop];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *button = (UIButton *)[self.view viewWithTag:0];
+    UIButton *button = (UIButton *)[self.view viewWithTag:1];
     [self switchDriverInfo:button];
 }
 
 
 - (void)dealloc
 {
+    [_driverInfoView release];
     [super dealloc];
 }
 
