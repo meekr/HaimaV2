@@ -43,6 +43,18 @@
 		C2871BC1153CE3110016FB87 /* star-driver-1-info.png in Resources */ = {isa = PBXBuildFile; fileRef = C2871BBE153CE3110016FB87 /* star-driver-1-info.png */; };
 		C2871BC2153CE3110016FB87 /* star-driver-2-info.png in Resources */ = {isa = PBXBuildFile; fileRef = C2871BBF153CE3110016FB87 /* star-driver-2-info.png */; };
 		C2871BC3153CE3110016FB87 /* star-driver-3-info.png in Resources */ = {isa = PBXBuildFile; fileRef = C2871BC0153CE3110016FB87 /* star-driver-3-info.png */; };
+		C2871BC6153CECAB0016FB87 /* Timeline.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2871BC5153CECAB0016FB87 /* Timeline.plist */; };
+		C2871BD3153CF2D00016FB87 /* 2000-8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BC8153CF2D00016FB87 /* 2000-8.jpg */; };
+		C2871BD4153CF2D00016FB87 /* 2002-7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BC9153CF2D00016FB87 /* 2002-7.jpg */; };
+		C2871BD5153CF2D00016FB87 /* 2003-7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCA153CF2D00016FB87 /* 2003-7.jpg */; };
+		C2871BD6153CF2D00016FB87 /* 2004-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCB153CF2D00016FB87 /* 2004-3.jpg */; };
+		C2871BD7153CF2D00016FB87 /* 2005-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCC153CF2D00016FB87 /* 2005-6.jpg */; };
+		C2871BD8153CF2D00016FB87 /* 2006-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCD153CF2D00016FB87 /* 2006-2.jpg */; };
+		C2871BD9153CF2D00016FB87 /* 2006-9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCE153CF2D00016FB87 /* 2006-9.jpg */; };
+		C2871BDA153CF2D00016FB87 /* 2007-10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BCF153CF2D00016FB87 /* 2007-10.jpg */; };
+		C2871BDB153CF2D00016FB87 /* 2008-9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BD0153CF2D00016FB87 /* 2008-9.jpg */; };
+		C2871BDC153CF2D00016FB87 /* 2009-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BD1153CF2D00016FB87 /* 2009-3.jpg */; };
+		C2871BDD153CF2D00016FB87 /* 2010-11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2871BD2153CF2D00016FB87 /* 2010-11.jpg */; };
 		C2885145153569DF0010D936 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2885144153569DF0010D936 /* bg.jpg */; };
 		C288515815356A1F0010D936 /* menu-bar-item-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C288514715356A1F0010D936 /* menu-bar-item-bg.png */; };
 		C288515915356A1F0010D936 /* tab-icon-calculator-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C288514815356A1F0010D936 /* tab-icon-calculator-selected.png */; };
@@ -152,6 +164,18 @@
 		C2871BBE153CE3110016FB87 /* star-driver-1-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-1-info.png"; sourceTree = "<group>"; };
 		C2871BBF153CE3110016FB87 /* star-driver-2-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-2-info.png"; sourceTree = "<group>"; };
 		C2871BC0153CE3110016FB87 /* star-driver-3-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-driver-3-info.png"; sourceTree = "<group>"; };
+		C2871BC5153CECAB0016FB87 /* Timeline.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timeline.plist; sourceTree = "<group>"; };
+		C2871BC8153CF2D00016FB87 /* 2000-8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2000-8.jpg"; sourceTree = "<group>"; };
+		C2871BC9153CF2D00016FB87 /* 2002-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2002-7.jpg"; sourceTree = "<group>"; };
+		C2871BCA153CF2D00016FB87 /* 2003-7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2003-7.jpg"; sourceTree = "<group>"; };
+		C2871BCB153CF2D00016FB87 /* 2004-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2004-3.jpg"; sourceTree = "<group>"; };
+		C2871BCC153CF2D00016FB87 /* 2005-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2005-6.jpg"; sourceTree = "<group>"; };
+		C2871BCD153CF2D00016FB87 /* 2006-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2006-2.jpg"; sourceTree = "<group>"; };
+		C2871BCE153CF2D00016FB87 /* 2006-9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2006-9.jpg"; sourceTree = "<group>"; };
+		C2871BCF153CF2D00016FB87 /* 2007-10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2007-10.jpg"; sourceTree = "<group>"; };
+		C2871BD0153CF2D00016FB87 /* 2008-9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2008-9.jpg"; sourceTree = "<group>"; };
+		C2871BD1153CF2D00016FB87 /* 2009-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2009-3.jpg"; sourceTree = "<group>"; };
+		C2871BD2153CF2D00016FB87 /* 2010-11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2010-11.jpg"; sourceTree = "<group>"; };
 		C2885144153569DF0010D936 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		C288514715356A1F0010D936 /* menu-bar-item-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bar-item-bg.png"; sourceTree = "<group>"; };
 		C288514815356A1F0010D936 /* tab-icon-calculator-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-icon-calculator-selected.png"; sourceTree = "<group>"; };
@@ -302,6 +326,24 @@
 			path = user;
 			sourceTree = "<group>";
 		};
+		C2871BC7153CF2D00016FB87 /* timeline */ = {
+			isa = PBXGroup;
+			children = (
+				C2871BC8153CF2D00016FB87 /* 2000-8.jpg */,
+				C2871BC9153CF2D00016FB87 /* 2002-7.jpg */,
+				C2871BCA153CF2D00016FB87 /* 2003-7.jpg */,
+				C2871BCB153CF2D00016FB87 /* 2004-3.jpg */,
+				C2871BCC153CF2D00016FB87 /* 2005-6.jpg */,
+				C2871BCD153CF2D00016FB87 /* 2006-2.jpg */,
+				C2871BCE153CF2D00016FB87 /* 2006-9.jpg */,
+				C2871BCF153CF2D00016FB87 /* 2007-10.jpg */,
+				C2871BD0153CF2D00016FB87 /* 2008-9.jpg */,
+				C2871BD1153CF2D00016FB87 /* 2009-3.jpg */,
+				C2871BD2153CF2D00016FB87 /* 2010-11.jpg */,
+			);
+			path = timeline;
+			sourceTree = "<group>";
+		};
 		C2885174153576F10010D936 /* page */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +351,7 @@
 				C27F587E1536CB6000DC14C7 /* user */,
 				C29E97271537DAFB007BDDDB /* champion */,
 				C2DCA47915382AC90024D135 /* pk */,
+				C2871BC7153CF2D00016FB87 /* timeline */,
 				C2885175153576F10010D936 /* product-navigate-bg.png */,
 				C2885176153576F10010D936 /* product-navigate-button-control.png */,
 				C2885177153576F10010D936 /* product-navigate-button-manifest.png */,
@@ -394,6 +437,7 @@
 				C2FF06C91532F0F800BD97EE /* AppDelegate.h */,
 				C2FF06CA1532F0F800BD97EE /* AppDelegate.m */,
 				C2B66CF41535CE1D006D5E88 /* Features.plist */,
+				C2871BC5153CECAB0016FB87 /* Timeline.plist */,
 				C2FF06C11532F0F800BD97EE /* Supporting Files */,
 			);
 			path = Haima;
@@ -428,34 +472,34 @@
 			children = (
 				C27D994E1535181D006305E0 /* BackgroundViewController.h */,
 				C27D994F1535181D006305E0 /* BackgroundViewController.m */,
-				C2FF06E61533150700BD97EE /* CustomTabBarViewController.h */,
-				C2FF06E71533150700BD97EE /* CustomTabBarViewController.m */,
-				C276DAAA1533E154003E9CDC /* MenuBarViewController.h */,
-				C276DAAB1533E154003E9CDC /* MenuBarViewController.m */,
-				C2F7EC3E1533B40200926313 /* IntroductionViewController.h */,
-				C2F7EC3F1533B40200926313 /* IntroductionViewController.m */,
-				C2F7EC421533B53D00926313 /* ChampionViewController.h */,
-				C2F7EC431533B53D00926313 /* ChampionViewController.m */,
 				C2885169153571A80010D936 /* BrandHistoryViewController.h */,
 				C288516A153571A80010D936 /* BrandHistoryViewController.m */,
-				C288516E1535740B0010D936 /* UserGroupViewController.h */,
-				C288516F1535740B0010D936 /* UserGroupViewController.m */,
-				C28851711535743F0010D936 /* ProductAdvantageViewController.h */,
-				C2885172153574400010D936 /* ProductAdvantageViewController.m */,
 				C274365615373AC8002B1372 /* CalculatorViewController.h */,
 				C274365715373AC8002B1372 /* CalculatorViewController.m */,
-				C274365915373E0F002B1372 /* MaintenanceViewController.h */,
-				C274365A15373E0F002B1372 /* MaintenanceViewController.m */,
-				C29E974E15381D6A007BDDDB /* ChampionRouteViewController.h */,
-				C29E974F15381D6A007BDDDB /* ChampionRouteViewController.m */,
-				C29E972A1537DB38007BDDDB /* ChampionRoadViewController.h */,
-				C29E972B1537DB38007BDDDB /* ChampionRoadViewController.m */,
-				C29E972D1537DC92007BDDDB /* StarDriverViewController.h */,
-				C29E972E1537DC92007BDDDB /* StarDriverViewController.m */,
 				C29E974315381CC7007BDDDB /* CtccIntroViewController.h */,
 				C29E974415381CC7007BDDDB /* CtccIntroViewController.m */,
+				C29E972A1537DB38007BDDDB /* ChampionRoadViewController.h */,
+				C29E972B1537DB38007BDDDB /* ChampionRoadViewController.m */,
+				C29E974E15381D6A007BDDDB /* ChampionRouteViewController.h */,
+				C29E974F15381D6A007BDDDB /* ChampionRouteViewController.m */,
+				C2F7EC421533B53D00926313 /* ChampionViewController.h */,
+				C2F7EC431533B53D00926313 /* ChampionViewController.m */,
+				C2FF06E61533150700BD97EE /* CustomTabBarViewController.h */,
+				C2FF06E71533150700BD97EE /* CustomTabBarViewController.m */,
+				C2F7EC3E1533B40200926313 /* IntroductionViewController.h */,
+				C2F7EC3F1533B40200926313 /* IntroductionViewController.m */,
+				C276DAAA1533E154003E9CDC /* MenuBarViewController.h */,
+				C276DAAB1533E154003E9CDC /* MenuBarViewController.m */,
+				C274365915373E0F002B1372 /* MaintenanceViewController.h */,
+				C274365A15373E0F002B1372 /* MaintenanceViewController.m */,
 				C2DCA476153828090024D135 /* PkViewController.h */,
 				C2DCA477153828090024D135 /* PkViewController.m */,
+				C28851711535743F0010D936 /* ProductAdvantageViewController.h */,
+				C2885172153574400010D936 /* ProductAdvantageViewController.m */,
+				C29E972D1537DC92007BDDDB /* StarDriverViewController.h */,
+				C29E972E1537DC92007BDDDB /* StarDriverViewController.m */,
+				C288516E1535740B0010D936 /* UserGroupViewController.h */,
+				C288516F1535740B0010D936 /* UserGroupViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -636,6 +680,18 @@
 				C2871BC1153CE3110016FB87 /* star-driver-1-info.png in Resources */,
 				C2871BC2153CE3110016FB87 /* star-driver-2-info.png in Resources */,
 				C2871BC3153CE3110016FB87 /* star-driver-3-info.png in Resources */,
+				C2871BC6153CECAB0016FB87 /* Timeline.plist in Resources */,
+				C2871BD3153CF2D00016FB87 /* 2000-8.jpg in Resources */,
+				C2871BD4153CF2D00016FB87 /* 2002-7.jpg in Resources */,
+				C2871BD5153CF2D00016FB87 /* 2003-7.jpg in Resources */,
+				C2871BD6153CF2D00016FB87 /* 2004-3.jpg in Resources */,
+				C2871BD7153CF2D00016FB87 /* 2005-6.jpg in Resources */,
+				C2871BD8153CF2D00016FB87 /* 2006-2.jpg in Resources */,
+				C2871BD9153CF2D00016FB87 /* 2006-9.jpg in Resources */,
+				C2871BDA153CF2D00016FB87 /* 2007-10.jpg in Resources */,
+				C2871BDB153CF2D00016FB87 /* 2008-9.jpg in Resources */,
+				C2871BDC153CF2D00016FB87 /* 2009-3.jpg in Resources */,
+				C2871BDD153CF2D00016FB87 /* 2010-11.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
