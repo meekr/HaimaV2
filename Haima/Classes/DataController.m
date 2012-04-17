@@ -99,6 +99,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DataController);
     return [item autorelease];
 }
 
+- (NSArray *)getTimelineEntries
+{
+    NSDictionary *dictionary = [DataUtil readDictionaryFromFile:@"Timeline"];
+    NSArray *array = [dictionary objectForKey:@"Entries"];
+    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:array.count];
+    for (NSDictionary *dict in array) {
+        TimelineEntry *entry = [[TimelineEntry alloc] init];
+        entry.timeOffset = [[dict objectForKey:@"timeOffset"] intValue];
+        entry.timeLabel = [dict objectForKey:@"timeLabel"];
+        entry.description = [dict objectForKey:@"description"];
+        entry.pictureUrl = [dict objectForKey:@"pictureUrl"];
+        [entries addObject:entry];
+        [entry release];
+    }
+    return entries;
+}
+
 - (void)dealloc
 {
     [_allFeatures release];

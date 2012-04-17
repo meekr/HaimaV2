@@ -9,6 +9,7 @@
 #import "ProductFeature.h"
 #import "ProductFeatureCategory.h"
 #import "ProductFeatureItem.h"
+#import "TimelineEntry.h"
 
 @interface DataController : NSObject
 
@@ -17,5 +18,7 @@
 @property (nonatomic, readonly) NSDictionary *allFeatures;
 
 - (ProductFeature *)getFeatureByIndex:(NSUInteger)index;
+
+- (NSArray *)getTimelineEntries;
 
 @end

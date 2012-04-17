@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BrandHistoryViewController : UIViewController
-
+{
+    UIScrollView *_scrollView;
+}
 @end
