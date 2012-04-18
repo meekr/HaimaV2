@@ -10,7 +10,8 @@
 #import "DataController.h"
 #import "TimelineEntry.h"
 #import "UIImage+bitrice.h"
-#import <QuartzCore/QuartzCore.h>
+#import "TimelineView.h"
+
 
 #define TIME_OFFSET_PREFIX 1
 #define TIME_OFFSET_SUFFIX 9
@@ -33,6 +34,11 @@
     int width = (TIME_OFFSET_PREFIX+lastEntry.timeOffset+TIME_OFFSET_SUFFIX) * PIXELS_PER_TIME_OFFSET;
     _scrollView.contentSize = CGSizeMake(width, _scrollView.frame.size.height);
     
+    TimelineView *timeline = [[[TimelineView alloc] initWithFrame:CGRectMake(0, 0, width, _scrollView.frame.size.height)] autorelease];
+    timeline.backgroundColor = [UIColor clearColor];
+    timeline.timelineEntries = entries;
+    [_scrollView addSubview:timeline];
+    
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, _scrollView.frame.size.height)];
 
     int factor = -1;
@@ -47,7 +53,7 @@
     
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, timeLabelBg.size.width, timeLabelBg.size.height);
-        button.center = CGPointMake(centerX - timeLabelBg.size.width/2, VERTICAL_MIDDLE_Y-factor*14);
+        button.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y-factor*14);
         button.userInteractionEnabled = NO;
         [button setBackgroundImage:timeLabelBg forState:UIControlStateNormal];
         [container addSubview:button];
@@ -78,7 +84,7 @@
                             
         UIImageView *picture = [[[UIImageView alloc] initWithImage:pictureImage] autorelease];
         picture.frame = CGRectMake(0, 0, PICTURE_WIDTH, PICTURE_HEIGHT);
-        picture.center = CGPointMake(centerX - timeLabelBg.size.width/2, VERTICAL_MIDDLE_Y + factor * 150);
+        picture.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y + factor * 120);
         picture.layer.borderColor = [UIColor whiteColor].CGColor;
         picture.layer.borderWidth = 5;
         picture.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -87,6 +93,19 @@
         picture.layer.shadowRadius = 2.0f;
         picture.layer.masksToBounds = NO;
         [container addSubview:picture];
+        
+        CGSize size = [entry.description sizeWithFont:[UIFont systemFontOfSize:14]
+                                    constrainedToSize:CGSizeMake(PICTURE_WIDTH, 999)
+                                        lineBreakMode:UILineBreakModeWordWrap];
+        UILabel *description = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, PICTURE_WIDTH, size.height)] autorelease];
+        description.backgroundColor = [UIColor clearColor];
+        description.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y + factor*(180+size.height/2));
+        description.font = [UIFont systemFontOfSize:14];
+        description.lineBreakMode = UILineBreakModeWordWrap;
+        description.numberOfLines = 0;
+        description.text = entry.description;
+        description.textColor = [UIColor darkGrayColor];
+        [container addSubview:description];
     }
     
     
@@ -117,5 +136,7 @@
     [_scrollView release];
     [super dealloc];
 }
+
+#pragma mark - UIScrollViewDelegate
 
 @end
