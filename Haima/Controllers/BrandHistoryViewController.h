@@ -8,11 +8,15 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TimelineScrollView.h"
+#import "TimeEntryView.h"
 
 
 @interface BrandHistoryViewController : UIViewController<TimelineScrollViewDelegate>
 {
     TimelineScrollView *_scrollView;
     NSArray *_timelineEntries;
+    
+    TimeEntryView *_timeEntryView;
+    UITapGestureRecognizer *_tapGesture;
 }
 @end

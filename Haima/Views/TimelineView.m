@@ -26,7 +26,7 @@
         for (int i=0; i<_timelineEntries.count; i++) {
             TimelineEntry *entry = [_timelineEntries objectAtIndex:i];
             int centerX = (entry.timeOffset + TIME_ENTRY_TIME_OFFSET_PREFIX) * TIME_ENTRY_PIXELS_PER_TIME_OFFSET;
-            if (entry.timeOffset - lastTimeOffset < 13)
+            if (entry.timeOffset - lastTimeOffset < TIME_OFFSET_THRESHOLD)
                 factor = -1 * factor;
             lastTimeOffset = entry.timeOffset;
             UIImage *timeLabelBg = [UIImage imageNamed:(factor > 0 ? @"time-label-bg-1" : @"time-label-bg")];
@@ -47,6 +47,16 @@
             buttonText.text = entry.timeLabel;
             [button addSubview:buttonText];
         }
+        
+        NSString *ending = @"更多内容，敬请期待 …";
+        CGSize size = [ending sizeWithFont:[UIFont boldSystemFontOfSize:15]];
+        endingWidth = size.width;
+        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(frame.size.width-size.width, (frame.size.height-size.height)/2.0, size.width, size.height)] autorelease];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:15];
+        label.text = ending;
+        label.textColor = [UIColor redColor];
+        [self addSubview:label];
     }
     return self;
 }
@@ -59,10 +69,13 @@
     CGContextSetStrokeColor(c, color);
     
     CGContextMoveToPoint(c, 0.0, rect.size.height/2-0.5);
-    CGContextAddLineToPoint(c, rect.size.width, rect.size.height/2-0.5);
+    CGContextAddLineToPoint(c, rect.size.width-endingWidth, rect.size.height/2-0.5);
     CGContextStrokePath(c);
     
     for (int i=1; i<rect.size.width/TIME_ENTRY_PIXELS_PER_TIME_OFFSET; i++) {
+        if (i*TIME_ENTRY_PIXELS_PER_TIME_OFFSET >= rect.size.width-endingWidth)
+            break;
+        
         CGContextMoveToPoint(c, i*TIME_ENTRY_PIXELS_PER_TIME_OFFSET, rect.size.height/2-0.5);
         CGContextAddLineToPoint(c, i*TIME_ENTRY_PIXELS_PER_TIME_OFFSET, rect.size.height/2+10.5);
         CGContextStrokePath(c);
@@ -73,12 +86,15 @@
     for (int i=0; i<_timelineEntries.count; i++) {
         TimelineEntry *entry = [_timelineEntries objectAtIndex:i];
         int centerX = (entry.timeOffset + TIME_ENTRY_TIME_OFFSET_PREFIX) * TIME_ENTRY_PIXELS_PER_TIME_OFFSET;
-        if (entry.timeOffset - lastTimeOffset < 12)
+        if (centerX > rect.size.width-endingWidth)
+            break;
+        
+        if (entry.timeOffset - lastTimeOffset < TIME_OFFSET_THRESHOLD)
             factor = -1 * factor;
         lastTimeOffset = entry.timeOffset;
         
         CGContextMoveToPoint(c, centerX, rect.size.height/2-0.5);
-        CGContextAddLineToPoint(c, centerX, rect.size.height/2+factor*120);
+        CGContextAddLineToPoint(c, centerX, rect.size.height/2+factor*TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE);
         CGContextStrokePath(c);
     }
 }

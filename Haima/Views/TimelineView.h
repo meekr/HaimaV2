@@ -9,6 +9,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface TimelineView : UIView
+{
+    float endingWidth;
+}
 
 @property (nonatomic, retain) NSArray *timelineEntries;
 

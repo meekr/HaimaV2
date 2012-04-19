@@ -10,7 +10,7 @@
 			<key>timeLabel</key>
 			<string>2000.8</string>
 			<key>description</key>
-			<string>海马CA7130轿车投放市场</string>
+			<string>海马CA7130轿车投放市场</string>
 			<key>pictureUrl</key>
 			<string>2000-8.jpg</string>
 		</dict>
@@ -20,7 +20,7 @@
 			<key>timeLabel</key>
 			<string>2002.7</string>
 			<key>description</key>
-			<string>国内首款中级车福美来福美来一代投放市场成为国内继捷达之后又一款热销的三厢车引入“中级家轿”的概念，直接将中国车市带入细分时代</string>
+			<string>国内首款中级车福美来一代上市成为国内继捷达之后又一款热销的三厢车引入“中级家轿”的概念，直接将中国车市带入细分时代</string>
 			<key>pictureUrl</key>
 			<string>2002-7.jpg</string>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>timeLabel</key>
 			<string>2003.7</string>
 			<key>description</key>
-			<string>福美来1.6MT新锐级上市</string>
+			<string>福美来1.6MT新锐级上市</string>
 			<key>pictureUrl</key>
 			<string>2003-7.jpg</string>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>timeLabel</key>
 			<string>2004.3</string>
 			<key>description</key>
-			<string>04款福美来上市，“新三样”深入人心</string>
+			<string>04款福美来上市“新三样”深入人心</string>
 			<key>pictureUrl</key>
 			<string>2004-3.jpg</string>
 		</dict>
@@ -50,7 +50,7 @@
 			<key>timeLabel</key>
 			<string>2005.6</string>
 			<key>description</key>
-			<string>福美来1.6新动力版投放市场</string>
+			<string>福美来1.6新动力版投放市场</string>
 			<key>pictureUrl</key>
 			<string>2005-6.jpg</string>
 		</dict>
@@ -70,7 +70,9 @@
 			<key>timeLabel</key>
 			<string>2006.9</string>
 			<key>description</key>
-			<string>新一代福美来上市上市售价8.18-11.18万元，创下了中级轿车价格新低第一款月销量过万台的国产品牌轿车</string>
+			<string>新一代福美来上市
+上市售价8.18-11.18万元，创下了中级轿车价格新低
+第一款月销量过万台的国产品牌轿车</string>
 			<key>pictureUrl</key>
 			<string>2006-9.jpg</string>
 		</dict>
@@ -100,7 +102,8 @@
 			<key>timeLabel</key>
 			<string>2009.3</string>
 			<key>description</key>
-			<string>2009年3月2日第50万辆福美来下线</string>
+			<string>2009年3月2日
+第50万辆福美来下线</string>
 			<key>pictureUrl</key>
 			<string>2009-3.jpg</string>
 		</dict>
@@ -110,7 +113,10 @@
 			<key>timeLabel</key>
 			<string>2010.11</string>
 			<key>description</key>
-			<string>福美来三代上市“HOMEY”“宜居轿车”“人、品、心、境”</string>
+			<string>福美来三代上市
+“HOMEY”
+“宜居轿车”
+“人、品、心、境”</string>
 			<key>pictureUrl</key>
 			<string>2010-11.jpg</string>
 		</dict>

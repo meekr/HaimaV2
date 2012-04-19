@@ -35,6 +35,7 @@
     for (int i=0; i<_timelineEntries.count; i++) {
         UIImageView *picture = (UIImageView *)[container viewWithTag:(i+1)*10];
         UILabel *description = (UILabel *)[container viewWithTag:(i+1)*10+1];
+        int factor = (picture.frame.origin.y > TIME_ENTRY_VERTICAL_MIDDLE_Y ? 1 : -1);
         
         // exceeds boundary
         if (picture.frame.origin.x < self.contentOffset.x-100 ||
@@ -43,18 +44,21 @@
         
         float deltaX = fabs(centerX - picture.center.x);
         float scale = 0.9f + (512-deltaX)/512;
-        float alpha = 1.0f - deltaX/1024;
+        float alpha = 1.0f - deltaX/(512*2.5);
 
         // picture
         picture.transform = CGAffineTransformMakeScale(scale, scale);
+        picture.center = CGPointMake(picture.center.x,
+                                     TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+picture.frame.size.height/2));
         picture.alpha = alpha;
       
         // label
-        CGSize size = [description.text sizeWithFont:[UIFont systemFontOfSize:14]
-                                    constrainedToSize:CGSizeMake(picture.frame.size.width, 999)
+        CGSize size = [description.text sizeWithFont:[UIFont systemFontOfSize:14*scale]
+                                    constrainedToSize:CGSizeMake(picture.frame.size.width+7, 999)
                                         lineBreakMode:UILineBreakModeWordWrap];
-        description.frame = CGRectMake(0, 0, picture.frame.size.width, size.height);
+        description.frame = CGRectMake(0, 0, picture.frame.size.width+7, size.height);
         description.alpha = alpha;
+        description.font = [UIFont systemFontOfSize:14*scale];
         if (picture.frame.origin.y > TIME_ENTRY_VERTICAL_MIDDLE_Y)
             description.center = CGPointMake(picture.center.x, picture.center.y+picture.frame.size.height/2+description.frame.size.height/2+10);
         else

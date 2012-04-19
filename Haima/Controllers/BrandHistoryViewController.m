@@ -37,7 +37,7 @@
     for (int i=0; i<_timelineEntries.count; i++) {
         TimelineEntry *entry = [_timelineEntries objectAtIndex:i];
         int centerX = (entry.timeOffset + TIME_ENTRY_TIME_OFFSET_PREFIX) * TIME_ENTRY_PIXELS_PER_TIME_OFFSET;
-        if (entry.timeOffset - lastTimeOffset < 12)
+        if (entry.timeOffset - lastTimeOffset < TIME_OFFSET_THRESHOLD)
             factor = -1 * factor;
         lastTimeOffset = entry.timeOffset;
     
@@ -60,7 +60,7 @@
         picture.tag = (i+1)*10;
         picture.userInteractionEnabled = YES;
         picture.frame = CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, TIME_ENTRY_PICTURE_HEIGHT);
-        picture.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y + factor * 120);
+        picture.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+TIME_ENTRY_PICTURE_HEIGHT/2));
         picture.layer.borderColor = [UIColor whiteColor].CGColor;
         picture.layer.borderWidth = 5;
         picture.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -70,15 +70,10 @@
         picture.layer.masksToBounds = NO;
         [container addSubview:picture];
         
-        CGSize size = [entry.description sizeWithFont:[UIFont systemFontOfSize:14]
-                                    constrainedToSize:CGSizeMake(TIME_ENTRY_PICTURE_WIDTH, 999)
-                                        lineBreakMode:UILineBreakModeWordWrap];
-        UILabel *description = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, size.height)] autorelease];
+        UILabel *description = [[[UILabel alloc] init] autorelease];
         description.tag = (i+1)*10+1;
         description.backgroundColor = [UIColor clearColor];
-        description.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y + factor*(180+size.height/2));
         description.font = [UIFont systemFontOfSize:14];
-        description.lineBreakMode = UILineBreakModeWordWrap;
         description.numberOfLines = 0;
         description.text = entry.description;
         description.textAlignment = UITextAlignmentLeft;
@@ -109,23 +104,56 @@
     [self.view addSubview:_scrollView];
     [self setupTimeline];
     
-//    UIImage *mask = [UIImage imageNamed:@"timeline-mask"];
-//    CALayer *maskLayer = [CALayer layer];
-//    maskLayer.frame = CGRectMake(0, 0, 1024, 690);
-//    maskLayer.contents = (id)mask.CGImage;
-//    self.view.layer.mask = maskLayer;
+    _timeEntryView = [[TimeEntryView alloc] init];
+    _timeEntryView.backgroundColor = [UIColor darkGrayColor];
+    _timeEntryView.frame = CGRectMake(0, 0, 1024, 690);
+    _timeEntryView.alpha = 0;
+    [self.view addSubview:_timeEntryView];
+    
+    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnTimeEntryView:)];
+}
+
+- (void)tapOnTimeEntryView:(UITapGestureRecognizer *)gesture {
+    [_timeEntryView removeGestureRecognizer:_tapGesture];
+    [UIView animateWithDuration:.2
+                          delay:0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         _timeEntryView.center = CGPointMake(512, 345);
+                         _timeEntryView.transform = CGAffineTransformMakeScale(0.3, 0.2);
+                         _timeEntryView.alpha = 0;
+                     }
+                     completion:^(BOOL finished){
+                     }];
 }
 
 - (void)dealloc
 {
     [_scrollView release];
     [_timelineEntries release];
+    [_timeEntryView release];
+    [_tapGesture release];
     [super dealloc];
 }
 
 #pragma mark - TimelineScrollViewDelegate
 - (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnIndex:(NSUInteger)index {
-    NSLog(@"tap on %d", index);
+    TimelineEntry *entry = [_timelineEntries objectAtIndex:index];
+    _timeEntryView.image = [UIImage imageNamed:entry.pictureUrl];
+    _timeEntryView.text = entry.description;
+    _timeEntryView.center = CGPointMake(512, 345);
+    _timeEntryView.transform = CGAffineTransformMakeScale(0.3, 0.2);
+    [UIView animateWithDuration:.2
+                          delay:0
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         _timeEntryView.center = CGPointMake(512, 345);
+                         _timeEntryView.transform = CGAffineTransformIdentity;
+                         _timeEntryView.alpha = 1;
+                     }
+                     completion:^(BOOL finished){
+                         [_timeEntryView addGestureRecognizer:_tapGesture];
+                     }];
 }
 
 
