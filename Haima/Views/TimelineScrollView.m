@@ -103,8 +103,8 @@
                 continue;
             
             if (CGRectContainsPoint(picture.bounds, [t locationInView:picture])) {
-                if ([self.timelineDelegate respondsToSelector:@selector(timelineScrollView:tapOnIndex:)])
-                    [self.timelineDelegate timelineScrollView:self tapOnIndex:picture.tag/10 - 1];
+                if ([self.timelineDelegate respondsToSelector:@selector(timelineScrollView:tapOnView:atIndex:)])
+                    [self.timelineDelegate timelineScrollView:self tapOnView:picture atIndex:picture.tag/10 - 1];
                 
                 break;
             }

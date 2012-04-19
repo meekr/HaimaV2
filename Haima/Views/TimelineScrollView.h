@@ -26,6 +26,6 @@
 
 @protocol TimelineScrollViewDelegate <NSObject>
 
-- (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnIndex:(NSUInteger)index;
+- (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnView:(UIImageView *)imageView atIndex:(NSUInteger)index;
 
 @end

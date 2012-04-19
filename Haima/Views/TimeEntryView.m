@@ -43,17 +43,13 @@
 }
 
 - (void)setImage:(UIImage *)image {
-    NSLog(@"before image size: %@", NSStringFromCGSize(image.size));
-//    image = [image imageByScalingProportionallyToSize:CGSizeMake(1024, 690)];
     image = [image imageByScalingToSize:CGSizeMake(1024, 690)];
-    NSLog(@"after image size: %@", NSStringFromCGSize(image.size));
     if (image != _image) {
         [_image release];
         _image = [image retain];
         imageView.image = image;
         
         imageView.frame = CGRectMake((1024-image.size.width)/2, (690-image.size.height)/2, image.size.width, image.size.height);
-        NSLog(@"image frame: %@", NSStringFromCGRect(imageView.frame));
     }
 }
 
@@ -67,7 +63,6 @@
                                    constrainedToSize:CGSizeMake(imageView.frame.size.width, 999)
                                        lineBreakMode:UILineBreakModeWordWrap];
         labelView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, imageView.frame.size.width, size.height+20);
-        NSLog(@"label frame: %@", NSStringFromCGRect(labelView.frame));
     }
 }
 

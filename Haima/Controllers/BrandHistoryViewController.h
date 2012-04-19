@@ -18,5 +18,6 @@
     
     TimeEntryView *_timeEntryView;
     UITapGestureRecognizer *_tapGesture;
+    UIImageView *_lastTapOnImageView;
 }
 @end

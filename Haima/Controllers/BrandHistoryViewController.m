@@ -119,8 +119,8 @@
                           delay:0
                         options:UIViewAnimationCurveEaseInOut
                      animations:^{
-                         _timeEntryView.center = CGPointMake(512, 345);
-                         _timeEntryView.transform = CGAffineTransformMakeScale(0.3, 0.2);
+                         _timeEntryView.center = CGPointMake(_lastTapOnImageView.center.x-_scrollView.contentOffset.x, _lastTapOnImageView.center.y);
+                         _timeEntryView.transform = CGAffineTransformMakeScale(_lastTapOnImageView.frame.size.width/1024, _lastTapOnImageView.frame.size.height/690);
                          _timeEntryView.alpha = 0;
                      }
                      completion:^(BOOL finished){
@@ -137,12 +137,14 @@
 }
 
 #pragma mark - TimelineScrollViewDelegate
-- (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnIndex:(NSUInteger)index {
+- (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnView:(UIImageView *)imageView atIndex:(NSUInteger)index {
+    _lastTapOnImageView = imageView;
+    
     TimelineEntry *entry = [_timelineEntries objectAtIndex:index];
     _timeEntryView.image = [UIImage imageNamed:entry.pictureUrl];
     _timeEntryView.text = entry.description;
-    _timeEntryView.center = CGPointMake(512, 345);
-    _timeEntryView.transform = CGAffineTransformMakeScale(0.3, 0.2);
+    _timeEntryView.center = CGPointMake(imageView.center.x-scrollView.contentOffset.x, imageView.center.y);
+    _timeEntryView.transform = CGAffineTransformMakeScale(imageView.frame.size.width/1024, imageView.frame.size.height/690);
     [UIView animateWithDuration:.2
                           delay:0
                         options:UIViewAnimationCurveEaseInOut
