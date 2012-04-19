@@ -20,7 +20,7 @@
     if (self = [super init])
     {
         self.menuBarItems = items;
-        self.menuBar = [[[MenuBar alloc] initWithItemCount:[items count] tag:1 delegate:self alignment:alignment referenceX:referenceX] autorelease];
+        self.menuBar = [[[MenuBar alloc] initWithItemCount:[items count] tag:1324 delegate:self alignment:alignment referenceX:referenceX] autorelease];
     }
     return self;
 }

@@ -12,6 +12,9 @@
 #import "CalculatorViewController.h"
 #import "MaintenanceViewController.h"
 #import "PkViewController.h"
+#import "PromotionViewController.h"
+#import "ExperienceViewController.h"
+#import "CustomizationViewController.h"
 
 #define SELECTED_VIEW_CONTROLLER_TAG 98456345
 
@@ -34,23 +37,23 @@ static NSArray* tabBarItems = nil;
         
         MaintenanceViewController *vc4 = [[[MaintenanceViewController alloc] init] autorelease];
         
-        UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
+        PromotionViewController *vc5 = [[[PromotionViewController alloc] init] autorelease];
         
         CalculatorViewController *vc6 = [[[CalculatorViewController alloc] init] autorelease];
         
-        UIViewController *detailController7 = [[[UIViewController alloc] init] autorelease];
+        CustomizationViewController *vc7 = [[[CustomizationViewController alloc] init] autorelease];
         
-        UIViewController *detailController8 = [[[UIViewController alloc] init] autorelease];
+        ExperienceViewController *vc8 = [[[ExperienceViewController alloc] init] autorelease];
         
         tabBarItems = [[NSArray arrayWithObjects:
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-intro", @"image", vc1, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-champion", @"image", vc2, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-pk", @"image", vc3, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-maintain", @"image", vc4, @"viewController", nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-promo", @"image", detailController5, @"viewController", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-promo", @"image", vc5, @"viewController", nil],
                         [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-calculator", @"image", vc6, @"viewController", nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-custom", @"image", detailController7, @"viewController", nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-experience", @"image", detailController8, @"viewController", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-custom", @"image", vc7, @"viewController", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"tab-icon-experience", @"image", vc8, @"viewController", nil],
                         nil] retain];
     }
     return self;
