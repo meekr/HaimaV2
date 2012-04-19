@@ -120,6 +120,7 @@
 		C2DA2779154005E100BF191A /* btn-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA276F154005E100BF191A /* btn-3.png */; };
 		C2DA277A154005E100BF191A /* btn-5-over.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA2770154005E100BF191A /* btn-5-over.png */; };
 		C2DA277B154005E100BF191A /* btn-5.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA2771154005E100BF191A /* btn-5.png */; };
+		C2DA277D1540154600BF191A /* promotion-title-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA277C1540154600BF191A /* promotion-title-bg.png */; };
 		C2DCA478153828090024D135 /* PkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DCA477153828090024D135 /* PkViewController.m */; };
 		C2DCA48F15382AD70024D135 /* pk-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA48815382AD70024D135 /* pk-bg.png */; };
 		C2DCA49015382AD70024D135 /* pk-left.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCA48915382AD70024D135 /* pk-left.png */; };
@@ -283,6 +284,7 @@
 		C2DA276F154005E100BF191A /* btn-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-3.png"; sourceTree = "<group>"; };
 		C2DA2770154005E100BF191A /* btn-5-over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-5-over.png"; sourceTree = "<group>"; };
 		C2DA2771154005E100BF191A /* btn-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-5.png"; sourceTree = "<group>"; };
+		C2DA277C1540154600BF191A /* promotion-title-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "promotion-title-bg.png"; sourceTree = "<group>"; };
 		C2DCA476153828090024D135 /* PkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PkViewController.h; sourceTree = "<group>"; };
 		C2DCA477153828090024D135 /* PkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PkViewController.m; sourceTree = "<group>"; };
 		C2DCA48815382AD70024D135 /* pk-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pk-bg.png"; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				C2885179153576F10010D936 /* product-navigate-button-safety.png */,
 				C29E973A153809F0007BDDDB /* price-table-bg.png */,
 				C29E973C15380C7C007BDDDB /* price-table-content.png */,
+				C2DA277C1540154600BF191A /* promotion-title-bg.png */,
 			);
 			path = page;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				C2DA2779154005E100BF191A /* btn-3.png in Resources */,
 				C2DA277A154005E100BF191A /* btn-5-over.png in Resources */,
 				C2DA277B154005E100BF191A /* btn-5.png in Resources */,
+				C2DA277D1540154600BF191A /* promotion-title-bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

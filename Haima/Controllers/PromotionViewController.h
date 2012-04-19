@@ -6,7 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 
 @interface PromotionViewController : UIViewController
+{
+    UIView *titleView;
+    UIWebView *webView;
+}
 
 @end
