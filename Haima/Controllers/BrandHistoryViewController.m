@@ -11,80 +11,56 @@
 #import "TimelineEntry.h"
 #import "UIImage+bitrice.h"
 #import "TimelineView.h"
-
-
-#define TIME_OFFSET_PREFIX 1
-#define TIME_OFFSET_SUFFIX 9
-#define PIXELS_PER_TIME_OFFSET 15
-
-#define VERTICAL_MIDDLE_Y 345
-
-#define PICTURE_WIDTH 170.0f
-#define PICTURE_HEIGHT 100.0f
-
+#import "Constants.h"
 
 @implementation BrandHistoryViewController
 
 
 - (void)setupTimeline {
-    NSArray *entries = [[DataController sharedDataController] getTimelineEntries];
+    _timelineEntries = [[[DataController sharedDataController] getTimelineEntries] retain];
+    _scrollView.timelineEntries = _timelineEntries;
     
     // calculate total width
-    TimelineEntry *lastEntry = [entries lastObject];
-    int width = (TIME_OFFSET_PREFIX+lastEntry.timeOffset+TIME_OFFSET_SUFFIX) * PIXELS_PER_TIME_OFFSET;
+    TimelineEntry *lastEntry = [_timelineEntries lastObject];
+    int width = (TIME_ENTRY_TIME_OFFSET_PREFIX+lastEntry.timeOffset+TIME_ENTRY_TIME_OFFSET_SUFFIX) * TIME_ENTRY_PIXELS_PER_TIME_OFFSET;
     _scrollView.contentSize = CGSizeMake(width, _scrollView.frame.size.height);
     
-    TimelineView *timeline = [[[TimelineView alloc] initWithFrame:CGRectMake(0, 0, width, _scrollView.frame.size.height)] autorelease];
+    TimelineView *timeline = [[[TimelineView alloc] initWithFrame:CGRectMake(0, 0, width, _scrollView.frame.size.height) andEntries:_timelineEntries] autorelease];
     timeline.backgroundColor = [UIColor clearColor];
-    timeline.timelineEntries = entries;
+    timeline.timelineEntries = _timelineEntries;
     [_scrollView addSubview:timeline];
     
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, _scrollView.frame.size.height)];
 
     int factor = -1;
     int lastTimeOffset = 0;
-    for (int i=0; i<entries.count; i++) {
-        TimelineEntry *entry = [entries objectAtIndex:i];
-        int centerX = (entry.timeOffset + TIME_OFFSET_PREFIX) * PIXELS_PER_TIME_OFFSET;
+    for (int i=0; i<_timelineEntries.count; i++) {
+        TimelineEntry *entry = [_timelineEntries objectAtIndex:i];
+        int centerX = (entry.timeOffset + TIME_ENTRY_TIME_OFFSET_PREFIX) * TIME_ENTRY_PIXELS_PER_TIME_OFFSET;
         if (entry.timeOffset - lastTimeOffset < 12)
             factor = -1 * factor;
         lastTimeOffset = entry.timeOffset;
-        UIImage *timeLabelBg = [UIImage imageNamed:(factor > 0 ? @"time-label-bg-1" : @"time-label-bg")];
     
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, timeLabelBg.size.width, timeLabelBg.size.height);
-        button.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y-factor*14);
-        button.userInteractionEnabled = NO;
-        [button setBackgroundImage:timeLabelBg forState:UIControlStateNormal];
-        [container addSubview:button];
-        
-        float targetY = factor > 0 ? 0 : 4;
-        UILabel *buttonText = [[[UILabel alloc] initWithFrame:CGRectMake(0, targetY, button.frame.size.width, 20)] autorelease];
-        buttonText.backgroundColor = [UIColor clearColor];
-        buttonText.font = [UIFont systemFontOfSize:13];
-        buttonText.textAlignment = UITextAlignmentCenter;
-        buttonText.textColor = [UIColor colorWithRed:31.0/255 green:85.0/255 blue:110.0/255 alpha:1];
-        buttonText.text = entry.timeLabel;
-        [button addSubview:buttonText];
-        
         UIImage *pictureImage = [UIImage imageNamed:entry.pictureUrl];
-        float ratioD = PICTURE_WIDTH / PICTURE_HEIGHT;
+        float ratioD = TIME_ENTRY_PICTURE_WIDTH / TIME_ENTRY_PICTURE_HEIGHT;
         float ratioA = pictureImage.size.width / pictureImage.size.height;
         CGRect rect;
         if (ratioA > ratioD) {
-            float widthD = PICTURE_WIDTH * pictureImage.size.height / PICTURE_HEIGHT;
+            float widthD = TIME_ENTRY_PICTURE_WIDTH * pictureImage.size.height / TIME_ENTRY_PICTURE_HEIGHT;
             rect = CGRectMake((pictureImage.size.width-widthD)/2, 0, widthD, pictureImage.size.height);
         }
         else {
-            float heightD = pictureImage.size.width * PICTURE_HEIGHT / PICTURE_WIDTH;
+            float heightD = pictureImage.size.width * TIME_ENTRY_PICTURE_HEIGHT / TIME_ENTRY_PICTURE_WIDTH;
             rect = CGRectMake(0, (pictureImage.size.height-heightD)/2, pictureImage.size.width, heightD);
         }
         pictureImage = [pictureImage imageAtRect:rect];
-        pictureImage = [pictureImage imageByScalingProportionallyToSize:CGSizeMake(PICTURE_WIDTH, PICTURE_HEIGHT)];
+        pictureImage = [pictureImage imageByScalingProportionallyToSize:CGSizeMake(TIME_ENTRY_PICTURE_WIDTH*1.9f, TIME_ENTRY_PICTURE_HEIGHT*1.9f)];
                             
         UIImageView *picture = [[[UIImageView alloc] initWithImage:pictureImage] autorelease];
-        picture.frame = CGRectMake(0, 0, PICTURE_WIDTH, PICTURE_HEIGHT);
-        picture.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y + factor * 120);
+        picture.tag = (i+1)*10;
+        picture.userInteractionEnabled = YES;
+        picture.frame = CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, TIME_ENTRY_PICTURE_HEIGHT);
+        picture.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y + factor * 120);
         picture.layer.borderColor = [UIColor whiteColor].CGColor;
         picture.layer.borderWidth = 5;
         picture.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -95,19 +71,20 @@
         [container addSubview:picture];
         
         CGSize size = [entry.description sizeWithFont:[UIFont systemFontOfSize:14]
-                                    constrainedToSize:CGSizeMake(PICTURE_WIDTH, 999)
+                                    constrainedToSize:CGSizeMake(TIME_ENTRY_PICTURE_WIDTH, 999)
                                         lineBreakMode:UILineBreakModeWordWrap];
-        UILabel *description = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, PICTURE_WIDTH, size.height)] autorelease];
+        UILabel *description = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, size.height)] autorelease];
+        description.tag = (i+1)*10+1;
         description.backgroundColor = [UIColor clearColor];
-        description.center = CGPointMake(centerX, VERTICAL_MIDDLE_Y + factor*(180+size.height/2));
+        description.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y + factor*(180+size.height/2));
         description.font = [UIFont systemFontOfSize:14];
         description.lineBreakMode = UILineBreakModeWordWrap;
         description.numberOfLines = 0;
         description.text = entry.description;
+        description.textAlignment = UITextAlignmentLeft;
         description.textColor = [UIColor darkGrayColor];
         [container addSubview:description];
     }
-    
     
     [_scrollView addSubview:container];
     [container release];
@@ -126,17 +103,30 @@
     [self.view addSubview:bg];
     [bg release];
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)];
+    _scrollView = [[TimelineScrollView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)];
+    _scrollView.backgroundColor = [UIColor clearColor];
+    _scrollView.timelineDelegate = self;
     [self.view addSubview:_scrollView];
     [self setupTimeline];
+    
+//    UIImage *mask = [UIImage imageNamed:@"timeline-mask"];
+//    CALayer *maskLayer = [CALayer layer];
+//    maskLayer.frame = CGRectMake(0, 0, 1024, 690);
+//    maskLayer.contents = (id)mask.CGImage;
+//    self.view.layer.mask = maskLayer;
 }
 
 - (void)dealloc
 {
     [_scrollView release];
+    [_timelineEntries release];
     [super dealloc];
 }
 
-#pragma mark - UIScrollViewDelegate
+#pragma mark - TimelineScrollViewDelegate
+- (void)timelineScrollView:(TimelineScrollView *)scrollView tapOnIndex:(NSUInteger)index {
+    NSLog(@"tap on %d", index);
+}
+
 
 @end

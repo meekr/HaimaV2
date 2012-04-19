@@ -7,9 +7,12 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "TimelineScrollView.h"
 
-@interface BrandHistoryViewController : UIViewController<UIScrollViewDelegate>
+
+@interface BrandHistoryViewController : UIViewController<TimelineScrollViewDelegate>
 {
-    UIScrollView *_scrollView;
+    TimelineScrollView *_scrollView;
+    NSArray *_timelineEntries;
 }
 @end

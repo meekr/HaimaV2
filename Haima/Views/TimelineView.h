@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) NSArray *timelineEntries;
 
+- (id)initWithFrame:(CGRect)frame andEntries:(NSArray *)entries;
+
 @end
