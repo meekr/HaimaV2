@@ -116,6 +116,12 @@
 		C2BF0E541540EE5000A365EA /* PictureGalleryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF0E531540EE5000A365EA /* PictureGalleryDetailViewController.m */; };
 		C2BF0E5B1540F78300A365EA /* media-9.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E591540F78300A365EA /* media-9.JPG */; };
 		C2BF0E5C1540F78300A365EA /* media-10.JPG in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E5A1540F78300A365EA /* media-10.JPG */; };
+		C2BF0E6F15411DBD00A365EA /* champion-video-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E6D15411DBD00A365EA /* champion-video-bg.png */; };
+		C2BF0E7015411DBD00A365EA /* champion-video-play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E6E15411DBD00A365EA /* champion-video-play-button.png */; };
+		C2BF0E7315411DFD00A365EA /* VideoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BF0E7215411DFD00A365EA /* VideoGalleryViewController.m */; };
+		C2BF0E76154120A900A365EA /* 2011 Tour.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E74154120A900A365EA /* 2011 Tour.mp4 */; };
+		C2BF0E7D1541336B00A365EA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BF0E7C1541336B00A365EA /* MediaPlayer.framework */; };
+		C2BF0E7F15413E1C00A365EA /* CTCC clip.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C2BF0E7E15413E1B00A365EA /* CTCC clip.mp4 */; };
 		C2C021C4153DAAFC0033C7CE /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C021C3153DAAFC0033C7CE /* TimelineEntry.m */; };
 		C2C021CD153DB1B30033C7CE /* UIImage+bitrice.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C021CC153DB1B30033C7CE /* UIImage+bitrice.m */; };
 		C2C021CF153DB4180033C7CE /* time-label-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C2C021CE153DB4180033C7CE /* time-label-bg.png */; };
@@ -294,6 +300,13 @@
 		C2BF0E531540EE5000A365EA /* PictureGalleryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGalleryDetailViewController.m; sourceTree = "<group>"; };
 		C2BF0E591540F78300A365EA /* media-9.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "media-9.JPG"; sourceTree = "<group>"; };
 		C2BF0E5A1540F78300A365EA /* media-10.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "media-10.JPG"; sourceTree = "<group>"; };
+		C2BF0E6D15411DBD00A365EA /* champion-video-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champion-video-bg.png"; sourceTree = "<group>"; };
+		C2BF0E6E15411DBD00A365EA /* champion-video-play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "champion-video-play-button.png"; sourceTree = "<group>"; };
+		C2BF0E7115411DFD00A365EA /* VideoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoGalleryViewController.h; sourceTree = "<group>"; };
+		C2BF0E7215411DFD00A365EA /* VideoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoGalleryViewController.m; sourceTree = "<group>"; };
+		C2BF0E74154120A900A365EA /* 2011 Tour.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "2011 Tour.mp4"; sourceTree = "<group>"; };
+		C2BF0E7C1541336B00A365EA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C2BF0E7E15413E1B00A365EA /* CTCC clip.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CTCC clip.mp4"; sourceTree = "<group>"; };
 		C2C021C2153DAAFC0033C7CE /* TimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEntry.h; sourceTree = "<group>"; };
 		C2C021C3153DAAFC0033C7CE /* TimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEntry.m; sourceTree = "<group>"; };
 		C2C021CB153DB1B30033C7CE /* UIImage+bitrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+bitrice.h"; sourceTree = "<group>"; };
@@ -364,6 +377,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BF0E7D1541336B00A365EA /* MediaPlayer.framework in Frameworks */,
 				C2C021D9153DCF4F0033C7CE /* QuartzCore.framework in Frameworks */,
 				C2FF06BB1532F0F800BD97EE /* UIKit.framework in Frameworks */,
 				C2FF06BD1532F0F800BD97EE /* Foundation.framework in Frameworks */,
@@ -469,6 +483,8 @@
 				C29E974915381D07007BDDDB /* ctcc-intro.png */,
 				C29E9741153818AC007BDDDB /* champion-bg.png */,
 				C29E97281537DAFB007BDDDB /* champion-road.png */,
+				C2BF0E6D15411DBD00A365EA /* champion-video-bg.png */,
+				C2BF0E6E15411DBD00A365EA /* champion-video-play-button.png */,
 				C22A98F1153A47DA00C01CC7 /* star-driver-1.png */,
 				C22A98F2153A47DA00C01CC7 /* star-driver-2.png */,
 				C22A98F3153A47DA00C01CC7 /* star-driver-3.png */,
@@ -483,6 +499,8 @@
 		C2BF0E2B1540DB6F00A365EA /* media */ = {
 			isa = PBXGroup;
 			children = (
+				C2BF0E74154120A900A365EA /* 2011 Tour.mp4 */,
+				C2BF0E7E15413E1B00A365EA /* CTCC clip.mp4 */,
 				C2BF0E311540EA8A00A365EA /* media-1.JPG */,
 				C2BF0E321540EA8A00A365EA /* media-2.JPG */,
 				C2BF0E331540EA8A00A365EA /* media-3.JPG */,
@@ -568,6 +586,7 @@
 				C2FF06BA1532F0F800BD97EE /* UIKit.framework */,
 				C2FF06BC1532F0F800BD97EE /* Foundation.framework */,
 				C2FF06BE1532F0F800BD97EE /* CoreGraphics.framework */,
+				C2BF0E7C1541336B00A365EA /* MediaPlayer.framework */,
 				C2C021D8153DCF4F0033C7CE /* QuartzCore.framework */,
 			);
 			name = Frameworks;
@@ -659,6 +678,8 @@
 				C29E972E1537DC92007BDDDB /* StarDriverViewController.m */,
 				C288516E1535740B0010D936 /* UserGroupViewController.h */,
 				C288516F1535740B0010D936 /* UserGroupViewController.m */,
+				C2BF0E7115411DFD00A365EA /* VideoGalleryViewController.h */,
+				C2BF0E7215411DFD00A365EA /* VideoGalleryViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -890,6 +911,10 @@
 				C2BF0E4E1540EA8A00A365EA /* media-15.JPG in Resources */,
 				C2BF0E5B1540F78300A365EA /* media-9.JPG in Resources */,
 				C2BF0E5C1540F78300A365EA /* media-10.JPG in Resources */,
+				C2BF0E6F15411DBD00A365EA /* champion-video-bg.png in Resources */,
+				C2BF0E7015411DBD00A365EA /* champion-video-play-button.png in Resources */,
+				C2BF0E76154120A900A365EA /* 2011 Tour.mp4 in Resources */,
+				C2BF0E7F15413E1C00A365EA /* CTCC clip.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +960,7 @@
 				C2E2C8081540686E009BD6B4 /* TimeEntryView.m in Sources */,
 				C2BF0E511540ED4800A365EA /* PictureGalleryViewController.m in Sources */,
 				C2BF0E541540EE5000A365EA /* PictureGalleryDetailViewController.m in Sources */,
+				C2BF0E7315411DFD00A365EA /* VideoGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

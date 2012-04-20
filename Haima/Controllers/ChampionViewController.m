@@ -12,6 +12,7 @@
 #import "StarDriverViewController.h"
 #import "CtccIntroViewController.h"
 #import "PictureGalleryViewController.h"
+#import "VideoGalleryViewController.h"
 
 #define SELECTED_VIEW_CONTROLLER_TAG 234241
 
@@ -40,8 +41,7 @@
         
         StarDriverViewController *vc4 = [[[StarDriverViewController alloc] init] autorelease];
         
-        UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
-        detailController5.view.backgroundColor = [UIColor yellowColor];
+        VideoGalleryViewController *vc5 = [[[VideoGalleryViewController alloc] init] autorelease];
         
         PictureGalleryViewController *vc6Root = [[[PictureGalleryViewController alloc] init] autorelease];
         UINavigationController *vc6 = [[UINavigationController alloc] initWithRootViewController:vc6Root];
@@ -69,7 +69,7 @@
                                      nil],
                                     [NSDictionary dictionaryWithObjectsAndKeys:
                                      @"精彩视频", @"title",
-                                     detailController5, @"viewController",
+                                     vc5, @"viewController",
                                      NSStringFromCGRect(CGRectMake(723, 67, 80, 40)), @"frame",
                                      nil],
                                     [NSDictionary dictionaryWithObjectsAndKeys:
