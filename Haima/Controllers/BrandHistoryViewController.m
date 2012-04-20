@@ -144,7 +144,7 @@
     _timeEntryView.image = [UIImage imageNamed:entry.pictureUrl];
     _timeEntryView.text = entry.description;
     _timeEntryView.center = CGPointMake(imageView.center.x-scrollView.contentOffset.x, imageView.center.y);
-    _timeEntryView.transform = CGAffineTransformMakeScale(imageView.frame.size.width/1024, imageView.frame.size.height/690);
+    _timeEntryView.transform = CGAffineTransformMakeScale(imageView.frame.size.width/1024, imageView.frame.size.height/690);   
     [UIView animateWithDuration:.2
                           delay:0
                         options:UIViewAnimationCurveEaseInOut

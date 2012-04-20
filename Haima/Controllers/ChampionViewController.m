@@ -11,6 +11,7 @@
 #import "ChampionRouteViewController.h"
 #import "StarDriverViewController.h"
 #import "CtccIntroViewController.h"
+#import "PictureGalleryViewController.h"
 
 #define SELECTED_VIEW_CONTROLLER_TAG 234241
 
@@ -42,8 +43,8 @@
         UIViewController *detailController5 = [[[UIViewController alloc] init] autorelease];
         detailController5.view.backgroundColor = [UIColor yellowColor];
         
-        UIViewController *detailController6 = [[[UIViewController alloc] init] autorelease];
-        detailController6.view.backgroundColor = [UIColor magentaColor];
+        PictureGalleryViewController *vc6Root = [[[PictureGalleryViewController alloc] init] autorelease];
+        UINavigationController *vc6 = [[UINavigationController alloc] initWithRootViewController:vc6Root];
         
         self.viewControllerItems = [NSArray arrayWithObjects:
                                     [NSDictionary dictionaryWithObjectsAndKeys:
@@ -73,7 +74,7 @@
                                      nil],
                                     [NSDictionary dictionaryWithObjectsAndKeys:
                                      @"图片欣赏", @"title",
-                                     detailController6, @"viewController",
+                                     vc6, @"viewController",
                                      NSStringFromCGRect(CGRectMake(808, 67, 90, 40)), @"frame",
                                      nil],
                                     nil];
@@ -86,7 +87,7 @@
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = tag++;
             button.frame = CGRectFromString([dict objectForKey:@"frame"]);
-            [button setTitle:[dict objectForKey:@"title"] forState:UIControlStateNormal];
+//            [button setTitle:[dict objectForKey:@"title"] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
             [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [button addTarget:self action:@selector(tabTapped:) forControlEvents:UIControlEventTouchUpInside];
