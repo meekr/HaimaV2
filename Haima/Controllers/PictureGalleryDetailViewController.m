@@ -8,6 +8,7 @@
 
 #import "PictureGalleryDetailViewController.h"
 #import "UIImage+bitrice.h"
+#import "ImageBrowserItemView.h"
 
 @implementation PictureGalleryDetailViewController
 
@@ -25,13 +26,27 @@
     [self.view addSubview:scrollView];
     
     for (int i=0; i<15; i++) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*rect.size.width, 0, rect.size.width, rect.size.height)];
-        view.tag = i+1;
-        view.image = [UIImage imageNamed:[NSString stringWithFormat:@"media-%d.JPG", i+1]];
-        view.image = [view.image imageByScalingProportionallyToSize:rect.size];
-        view.contentMode = UIViewContentModeCenter;
+        CGRect r = CGRectMake(i*rect.size.width, 0, rect.size.width, rect.size.height);
+        NSLog(@"%@", NSStringFromCGRect(r));
+        ImageBrowserItemView *view= [ImageBrowserItemView
+                                     itemViewWithFrame:r
+                                     imageURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", i+1]]];
+//        UIView *view = [[[UIView alloc] initWithFrame:r] autorelease];
         view.backgroundColor = [UIColor blueColor];
+        view.tag = i+1;
+        UILabel *l = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 30)] autorelease];
+        l.text = [NSString stringWithFormat:@"AAAAAA %d", i];
+        [view addSubview:l];
         [scrollView addSubview:view];
+        
+        
+//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*rect.size.width, 0, rect.size.width, rect.size.height)];
+//        view.tag = i+1;
+//        view.image = [UIImage imageNamed:[NSString stringWithFormat:@"media-%d.JPG", i+1]];
+//        view.image = [view.image imageByScalingProportionallyToSize:rect.size];
+//        view.contentMode = UIViewContentModeCenter;
+//        view.backgroundColor = [UIColor blueColor];
+//        [scrollView addSubview:view];
     }
     
     [scrollView release];

@@ -49,20 +49,20 @@
         // picture
         picture.transform = CGAffineTransformMakeScale(scale, scale);
         picture.center = CGPointMake(picture.center.x,
-                                     TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+picture.frame.size.height/2));
+                                     TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+picture.frame.size.height/2-12));
         picture.alpha = alpha;
       
         // label
         CGSize size = [description.text sizeWithFont:[UIFont systemFontOfSize:14*scale]
                                     constrainedToSize:CGSizeMake(picture.frame.size.width+7, 999)
                                         lineBreakMode:UILineBreakModeWordWrap];
-        description.frame = CGRectMake(0, 0, picture.frame.size.width+7, size.height);
+        description.frame = CGRectMake(0, 0, picture.frame.size.width-16*scale, size.height);
         description.alpha = alpha;
         description.font = [UIFont systemFontOfSize:14*scale];
         if (picture.frame.origin.y > TIME_ENTRY_VERTICAL_MIDDLE_Y)
-            description.center = CGPointMake(picture.center.x, picture.center.y+picture.frame.size.height/2+description.frame.size.height/2+10);
+            description.center = CGPointMake(picture.center.x, picture.center.y+picture.frame.size.height/2+description.frame.size.height/2);
         else
-            description.center = CGPointMake(picture.center.x, picture.center.y-picture.frame.size.height/2-description.frame.size.height/2);
+            description.center = CGPointMake(picture.center.x, picture.center.y-picture.frame.size.height/2-description.frame.size.height/2+6);
     }
 }
 

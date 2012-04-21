@@ -10,10 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+bitrice.h"
 #import "PictureGalleryDetailViewController.h"
+#import "ImageBrowserItemView.h"
 
 
-#define PIC_WIDTH 145
-#define PIC_HEIGHT 115
+#define PIC_WIDTH 150
+#define PIC_HEIGHT 130
 
 @implementation PictureGalleryViewController
 
@@ -32,20 +33,16 @@
     for (int i=0; i<15; i++) {
         int row = i / 5;
         int col = i % 5;
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(100+(PIC_WIDTH+20)*col,
-                                                                          20+(PIC_HEIGHT+20)*row,
-                                                                          PIC_WIDTH,
-                                                                          PIC_HEIGHT)];
+        
+        CGRect rect = CGRectMake(100+(PIC_WIDTH+10)*col,
+                                 20+(PIC_HEIGHT+10)*row,
+                                 PIC_WIDTH,
+                                 PIC_HEIGHT);
+        ImageBrowserItemView *view= [ImageBrowserItemView
+                                         itemViewWithFrame:rect
+                                         imageURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", i+1]]];
+        view.backgroundColor = [UIColor clearColor];
         view.tag = i+1;
-        view.image = [[UIImage imageNamed:[NSString stringWithFormat:@"media-%d.JPG", i+1]]
-                      imageByScalingProportionallyToSize:CGSizeMake(PIC_WIDTH, PIC_HEIGHT)];
-        view.layer.borderColor = [UIColor whiteColor].CGColor;
-        view.layer.borderWidth = 5;
-        view.layer.shadowColor = [UIColor blackColor].CGColor;
-        view.layer.shadowOpacity = 0.3f;
-        view.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
-        view.layer.shadowRadius = 2.0f;
-        view.layer.masksToBounds = NO;
         [scrollView addSubview:view];
     }
 

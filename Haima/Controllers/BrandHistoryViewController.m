@@ -12,6 +12,7 @@
 #import "UIImage+bitrice.h"
 #import "TimelineView.h"
 #import "Constants.h"
+#import "ImageBrowserItemView.h"
 
 @implementation BrandHistoryViewController
 
@@ -41,35 +42,14 @@
             factor = -1 * factor;
         lastTimeOffset = entry.timeOffset;
     
-        UIImage *pictureImage = [UIImage imageNamed:entry.pictureUrl];
-        float ratioD = TIME_ENTRY_PICTURE_WIDTH / TIME_ENTRY_PICTURE_HEIGHT;
-        float ratioA = pictureImage.size.width / pictureImage.size.height;
-        CGRect rect;
-        if (ratioA > ratioD) {
-            float widthD = TIME_ENTRY_PICTURE_WIDTH * pictureImage.size.height / TIME_ENTRY_PICTURE_HEIGHT;
-            rect = CGRectMake((pictureImage.size.width-widthD)/2, 0, widthD, pictureImage.size.height);
-        }
-        else {
-            float heightD = pictureImage.size.width * TIME_ENTRY_PICTURE_HEIGHT / TIME_ENTRY_PICTURE_WIDTH;
-            rect = CGRectMake(0, (pictureImage.size.height-heightD)/2, pictureImage.size.width, heightD);
-        }
-        pictureImage = [pictureImage imageAtRect:rect];
-        pictureImage = [pictureImage imageByScalingProportionallyToSize:CGSizeMake(TIME_ENTRY_PICTURE_WIDTH*1.9f, TIME_ENTRY_PICTURE_HEIGHT*1.9f)];
-                            
-        UIImageView *picture = [[[UIImageView alloc] initWithImage:pictureImage] autorelease];
+        CGRect rect = CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, TIME_ENTRY_PICTURE_HEIGHT);
+        ImageBrowserItemView *picture = [ImageBrowserItemView itemViewWithFrame:rect
+                                                                       imageURL:[NSURL fileURLWithPath:entry.pictureUrl]];
+        picture.backgroundColor = [UIColor clearColor];
         picture.tag = (i+1)*10;
-        picture.userInteractionEnabled = YES;
-        picture.frame = CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, TIME_ENTRY_PICTURE_HEIGHT);
         picture.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+TIME_ENTRY_PICTURE_HEIGHT/2));
-        picture.layer.borderColor = [UIColor whiteColor].CGColor;
-        picture.layer.borderWidth = 5;
-        picture.layer.shadowColor = [UIColor blackColor].CGColor;
-        picture.layer.shadowOpacity = 0.3f;
-        picture.layer.shadowOffset = CGSizeMake(4.0f, 4.0f);
-        picture.layer.shadowRadius = 2.0f;
-        picture.layer.masksToBounds = NO;
         [container addSubview:picture];
-        
+                
         UILabel *description = [[[UILabel alloc] init] autorelease];
         description.tag = (i+1)*10+1;
         description.backgroundColor = [UIColor clearColor];

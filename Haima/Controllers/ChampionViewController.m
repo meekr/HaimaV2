@@ -88,8 +88,8 @@
             button.tag = tag++;
             button.frame = CGRectFromString([dict objectForKey:@"frame"]);
 //            [button setTitle:[dict objectForKey:@"title"] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-            [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
+//            [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+//            [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
             [button addTarget:self action:@selector(tabTapped:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:button];
         }
