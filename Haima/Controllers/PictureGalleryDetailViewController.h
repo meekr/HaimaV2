@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "ImageBrowserItemLayer.h"
 
-@interface PictureGalleryDetailViewController : UIViewController
+@interface PictureGalleryDetailViewController : UIViewController<ImageBrowserItemLayerDelegate>
 
 @property NSUInteger currentIndex;
 

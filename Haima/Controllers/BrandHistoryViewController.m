@@ -45,6 +45,7 @@
         CGRect rect = CGRectMake(0, 0, TIME_ENTRY_PICTURE_WIDTH, TIME_ENTRY_PICTURE_HEIGHT);
         ImageBrowserItemView *picture = [ImageBrowserItemView itemViewWithFrame:rect
                                                                        imageURL:[NSURL fileURLWithPath:entry.pictureUrl]];
+        picture.imageDelegate = self;
         picture.backgroundColor = [UIColor clearColor];
         picture.tag = (i+1)*10;
         picture.center = CGPointMake(centerX, TIME_ENTRY_VERTICAL_MIDDLE_Y+factor*(TIME_ENTRY_VERTICAL_OFFSET_FROM_MIDDLE+TIME_ENTRY_PICTURE_HEIGHT/2));
@@ -138,5 +139,28 @@
                      }];
 }
 
+
+#pragma mark - ImageBrowserItemLayerDelegate
+- (CGRect)getImageLayerFrameByImageSize:(CGSize)imageSize andBoundsSize:(CGSize)boundsSize {
+    CGRect r = CGRectInset(CGRectMake(0, 0, boundsSize.width, boundsSize.height), 8, 8);
+    return r;
+}
+
+- (UIImage *)getDownsampledImageByBoundsSize:(CGSize)boundsSize originalImage:(UIImage *)image {
+    float ratioD = boundsSize.width/boundsSize.height;
+    float ratioA = image.size.width / image.size.height;
+    CGRect rect;
+    if (ratioA > ratioD) {
+        float widthD = boundsSize.width * image.size.height / boundsSize.height;
+        rect = CGRectMake((image.size.width-widthD)/2, 0, widthD, image.size.height);
+    }
+    else {
+        float heightD = image.size.width * boundsSize.height / boundsSize.width;
+        rect = CGRectMake(0, (image.size.height-heightD)/2, image.size.width, heightD);
+    }
+    image = [image imageAtRect:rect];
+    image = [image imageByScalingProportionallyToSize:CGSizeMake(boundsSize.width*1.9f, boundsSize.height*1.9f)];
+    return image;
+}
 
 @end

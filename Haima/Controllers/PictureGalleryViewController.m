@@ -41,6 +41,7 @@
         ImageBrowserItemView *view= [ImageBrowserItemView
                                          itemViewWithFrame:rect
                                          imageURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", i+1]]];
+        view.imageDelegate = self;
         view.backgroundColor = [UIColor clearColor];
         view.tag = i+1;
         [scrollView addSubview:view];
@@ -73,6 +74,30 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+
+#pragma mark - ImageBrowserItemLayerDelegate
+- (CGRect)getImageLayerFrameByImageSize:(CGSize)imageSize andBoundsSize:(CGSize)boundsSize {
+    CGRect r = CGRectInset(CGRectMake(0, 0, boundsSize.width, boundsSize.height), 8, 8);
+    return r;
+}
+
+- (UIImage *)getDownsampledImageByBoundsSize:(CGSize)boundsSize originalImage:(UIImage *)image {
+    float ratioD = boundsSize.width/boundsSize.height;
+    float ratioA = image.size.width / image.size.height;
+    CGRect rect;
+    if (ratioA > ratioD) {
+        float widthD = boundsSize.width * image.size.height / boundsSize.height;
+        rect = CGRectMake((image.size.width-widthD)/2, 0, widthD, image.size.height);
+    }
+    else {
+        float heightD = image.size.width * boundsSize.height / boundsSize.width;
+        rect = CGRectMake(0, (image.size.height-heightD)/2, image.size.width, heightD);
+    }
+    image = [image imageAtRect:rect];
+    image = [image imageByScalingProportionallyToSize:boundsSize];
+    return image;
 }
 
 @end

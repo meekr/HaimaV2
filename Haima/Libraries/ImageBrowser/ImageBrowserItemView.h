@@ -46,7 +46,7 @@
 
    Copyright (C) 2010 Apple Inc. All Rights Reserved. */
 
-#import <UIKit/UIKit.h>
+#import "ImageBrowserItemLayer.h"
 
 @interface ImageBrowserItemView : UIView
 
@@ -54,6 +54,7 @@
 
 - (id)initWithFrame:(CGRect)r imageURL:(NSURL *)url;
 
-@property(nonatomic, readonly) NSURL *imageURL;
+@property(nonatomic, retain) NSURL *imageURL;
+@property (nonatomic, assign) id<ImageBrowserItemLayerDelegate> imageDelegate;
 
 @end

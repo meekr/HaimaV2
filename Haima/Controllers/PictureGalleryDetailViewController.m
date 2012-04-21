@@ -16,37 +16,24 @@
 
 - (void)loadView {
     [super loadView];
-    self.view.backgroundColor = [UIColor yellowColor];
     
-    CGRect rect = CGRectMake(120, 0, 1024-240, 768-198);
+    CGRect rect = CGRectMake(120, 0, 1024-240, 492);
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:rect];
     scrollView.contentSize = CGSizeMake(rect.size.width*15, rect.size.height);
     scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
     
     for (int i=0; i<15; i++) {
         CGRect r = CGRectMake(i*rect.size.width, 0, rect.size.width, rect.size.height);
-        NSLog(@"%@", NSStringFromCGRect(r));
         ImageBrowserItemView *view= [ImageBrowserItemView
                                      itemViewWithFrame:r
-                                     imageURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", i+1]]];
-//        UIView *view = [[[UIView alloc] initWithFrame:r] autorelease];
-        view.backgroundColor = [UIColor blueColor];
+                                     imageURL:nil];
+        view.imageDelegate = self;
+        view.backgroundColor = [UIColor clearColor];
         view.tag = i+1;
-        UILabel *l = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 30)] autorelease];
-        l.text = [NSString stringWithFormat:@"AAAAAA %d", i];
-        [view addSubview:l];
         [scrollView addSubview:view];
-        
-        
-//        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*rect.size.width, 0, rect.size.width, rect.size.height)];
-//        view.tag = i+1;
-//        view.image = [UIImage imageNamed:[NSString stringWithFormat:@"media-%d.JPG", i+1]];
-//        view.image = [view.image imageByScalingProportionallyToSize:rect.size];
-//        view.contentMode = UIViewContentModeCenter;
-//        view.backgroundColor = [UIColor blueColor];
-//        [scrollView addSubview:view];
     }
     
     [scrollView release];
@@ -64,6 +51,29 @@
     
     UIScrollView *scrollView = (UIScrollView *)[self.view.subviews objectAtIndex:0];
     [scrollView setContentOffset:CGPointMake(_currentIndex*scrollView.frame.size.width, 0) animated:YES];
+    
+    // load images
+    ImageBrowserItemView *view = [scrollView.subviews objectAtIndex:_currentIndex];
+    view.imageURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", _currentIndex+1]];
+    
+    
+    // load other images in other thread
+    dispatch_queue_t main_queue = dispatch_get_main_queue();
+    dispatch_queue_t request_queue = dispatch_queue_create("com.app.biterice", NULL);
+    
+    dispatch_async(request_queue, ^{
+        for (int i=0; i<15; i++) {
+            if (i != _currentIndex) {
+                dispatch_sync(main_queue, ^{
+                    ImageBrowserItemView *view = [scrollView.subviews objectAtIndex:i];
+                    view.imageURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"media-%d.JPG", i+1]];
+                });
+            }
+            
+            if (i==14)
+                dispatch_release(request_queue);
+        }
+    });
 }
 
 - (void)returnAction:(UIButton *)button {
@@ -77,5 +87,20 @@
 - (void)dealloc {
     [super dealloc];
 }
+
+
+#pragma mark - ImageBrowserItemLayerDelegate
+- (CGRect)getImageLayerFrameByImageSize:(CGSize)imageSize andBoundsSize:(CGSize)boundsSize {
+    CGSize s = imageSize;
+    CGRect r = CGRectMake(0, 0, boundsSize.width, boundsSize.height);
+    CGFloat scale = MIN(r.size.width / s.width, r.size.height / s.height);
+    s.width *= scale; s.height *= scale;
+    r.origin.x += (r.size.width - s.width) * .5;
+    r.size.width = s.width;
+    r.origin.y += (r.size.height - s.height) * .5;
+    r.size.height = s.height;
+    return r;
+}
+
 
 @end

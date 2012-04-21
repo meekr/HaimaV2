@@ -49,10 +49,22 @@
 #import <QuartzCore/QuartzCore.h>
 
 @class NSURL, UIImage;
+@protocol ImageBrowserItemLayerDelegate;
 
 @interface ImageBrowserItemLayer : CALayer
 
 @property(nonatomic, copy) NSURL *imageURL;
 @property(nonatomic, retain) UIImage *image;
+@property (nonatomic, assign) id<ImageBrowserItemLayerDelegate> imageDelegate;
+
+@end
+
+
+@protocol ImageBrowserItemLayerDelegate <NSObject>
+
+- (CGRect)getImageLayerFrameByImageSize:(CGSize)imageSize andBoundsSize:(CGSize)boundsSize;
+
+@optional
+- (UIImage *)getDownsampledImageByBoundsSize:(CGSize)boundsSize originalImage:(UIImage *)image;
 
 @end

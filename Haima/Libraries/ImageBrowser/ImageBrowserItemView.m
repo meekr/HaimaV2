@@ -52,6 +52,8 @@
 
 @implementation ImageBrowserItemView
 
+@synthesize imageDelegate;
+
 + (ImageBrowserItemView *)itemViewWithFrame:(CGRect)r imageURL:(NSURL *)url
 {
   return [[[self alloc] initWithFrame:r imageURL:url] autorelease];
@@ -76,6 +78,16 @@
 - (NSURL *)imageURL
 {
   return ((ImageBrowserItemLayer *)self.layer).imageURL;
+}
+
+- (void)setImageURL:(NSURL *)imageURL
+{
+    ((ImageBrowserItemLayer *)self.layer).imageURL = imageURL;
+}
+
+- (void)setImageDelegate:(id)aimageDelegate
+{
+    ((ImageBrowserItemLayer *)self.layer).imageDelegate = aimageDelegate;
 }
 
 @end

@@ -9,9 +9,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TimelineScrollView.h"
 #import "TimeEntryView.h"
+#import "ImageBrowserItemLayer.h"
 
 
-@interface BrandHistoryViewController : UIViewController<TimelineScrollViewDelegate>
+@interface BrandHistoryViewController : UIViewController<TimelineScrollViewDelegate, ImageBrowserItemLayerDelegate>
 {
     TimelineScrollView *_scrollView;
     NSArray *_timelineEntries;

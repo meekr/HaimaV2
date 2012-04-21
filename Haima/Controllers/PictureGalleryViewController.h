@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-@interface PictureGalleryViewController : UIViewController
+#import "ImageBrowserItemLayer.h"
+
+@interface PictureGalleryViewController : UIViewController<ImageBrowserItemLayerDelegate>
 
 @end

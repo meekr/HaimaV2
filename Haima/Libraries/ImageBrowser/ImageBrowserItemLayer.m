@@ -60,6 +60,7 @@
 
 @dynamic imageURL;
 @dynamic image;
+@synthesize imageDelegate;
 
 static BOOL _imageThreadRunning;
 static NSMutableArray *_imageQueue;
@@ -168,14 +169,9 @@ static NSMutableArray *_imageQueue;
   if (image != nil)
   {
       CGSize s = image.size;
-      CGRect r = CGRectInset (bounds, 8, 8);
-//      CGFloat scale = MIN (r.size.width / s.width, r.size.height / s.height);
-//      s.width *= scale; s.height *= scale;
-      s = r.size;
-      r.origin.x += (r.size.width - s.width) * .5;
-      r.size.width = s.width;
-      r.origin.y += (r.size.height - s.height) * .5;
-      r.size.height = s.height;
+      CGRect r = bounds;
+      if (imageDelegate)
+          r = [imageDelegate getImageLayerFrameByImageSize:s andBoundsSize:r.size];
 
       CGContextSaveGState (ctx);
       CGContextTranslateCTM (ctx, 0, bounds.size.height);
@@ -191,19 +187,8 @@ static NSMutableArray *_imageQueue;
     NSString *str = [self.imageURL path];
     str = [str substringFromIndex:1];
     self.image = [UIImage imageNamed:str];
-    float ratioD = self.bounds.size.width/self.bounds.size.height;
-    float ratioA = self.image.size.width / self.image.size.height;
-    CGRect rect;
-    if (ratioA > ratioD) {
-        float widthD = self.bounds.size.width * self.image.size.height / self.bounds.size.height;
-        rect = CGRectMake((self.image.size.width-widthD)/2, 0, widthD, self.image.size.height);
-    }
-    else {
-        float heightD = self.image.size.width * self.bounds.size.height / self.bounds.size.width;
-        rect = CGRectMake(0, (self.image.size.height-heightD)/2, self.image.size.width, heightD);
-    }
-    self.image = [self.image imageAtRect:rect];
-    self.image = [self.image imageByScalingProportionallyToSize:CGSizeMake(self.bounds.size.width*1.9f, self.bounds.size.height*1.9f)];
+    if ([imageDelegate respondsToSelector:@selector(getDownsampledImageByBoundsSize:originalImage:)])
+        self.image = [imageDelegate getDownsampledImageByBoundsSize:self.bounds.size originalImage:self.image];
 
   [CATransaction lock];
   UIImage *image = [[self.image retain] autorelease];

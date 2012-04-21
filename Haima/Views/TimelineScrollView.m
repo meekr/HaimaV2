@@ -56,7 +56,7 @@
         CGSize size = [description.text sizeWithFont:[UIFont systemFontOfSize:14*scale]
                                     constrainedToSize:CGSizeMake(picture.frame.size.width+7, 999)
                                         lineBreakMode:UILineBreakModeWordWrap];
-        description.frame = CGRectMake(0, 0, picture.frame.size.width-16*scale, size.height);
+        description.frame = CGRectMake(0, 0, picture.frame.size.width-16*scale+10, size.height);
         description.alpha = alpha;
         description.font = [UIFont systemFontOfSize:14*scale];
         if (picture.frame.origin.y > TIME_ENTRY_VERTICAL_MIDDLE_Y)
