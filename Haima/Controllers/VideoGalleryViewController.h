@@ -6,7 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface VideoGalleryViewController : UIViewController
+{
+    MPMoviePlayerController *_player1;
+    MPMoviePlayerController *_player2;
+}
 
 @end

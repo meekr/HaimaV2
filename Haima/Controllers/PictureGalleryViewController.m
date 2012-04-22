@@ -70,6 +70,7 @@
     PictureGalleryDetailViewController *vc = [[PictureGalleryDetailViewController alloc] init];
     vc.currentIndex = tapIndex;
     [self.navigationController pushViewController:vc animated:NO];
+    [vc release];
 }
 
 - (void)dealloc {

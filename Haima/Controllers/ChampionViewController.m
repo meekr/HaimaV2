@@ -44,7 +44,7 @@
         VideoGalleryViewController *vc5 = [[[VideoGalleryViewController alloc] init] autorelease];
         
         PictureGalleryViewController *vc6Root = [[[PictureGalleryViewController alloc] init] autorelease];
-        UINavigationController *vc6 = [[UINavigationController alloc] initWithRootViewController:vc6Root];
+        UINavigationController *vc6 = [[[UINavigationController alloc] initWithRootViewController:vc6Root] autorelease];
         
         self.viewControllerItems = [NSArray arrayWithObjects:
                                     [NSDictionary dictionaryWithObjectsAndKeys:

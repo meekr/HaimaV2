@@ -7,7 +7,6 @@
 //
 
 #import "VideoGalleryViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 
 @implementation VideoGalleryViewController
@@ -40,34 +39,37 @@
     NSString *url = [[NSBundle mainBundle]
                      pathForResource:@"2011 Tour"
                      ofType:@"mp4"];
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] 
-                                       initWithContentURL:[NSURL fileURLWithPath:url]];
+    
+    if (_player1 == nil) {
+        _player1 = [[MPMoviePlayerController alloc] 
+                     initWithContentURL:[NSURL fileURLWithPath:url]];
+        _player1.view.backgroundColor = [UIColor clearColor];
+        _player1.view.frame = CGRectMake(534, 17, 396, 216);
+    }
+    [self.view addSubview:_player1.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(movieFinishedCallback:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:player];
-    
-    player.view.backgroundColor = [UIColor clearColor];
-    player.view.frame = CGRectMake(534, 17, 396, 216);
-    [self.view addSubview:player.view];
-    [player play];
+                                               object:_player1];
+    [_player1 play];
 }
 
 - (void)playVideo2:(UIButton *)button {
     NSString *url = [[NSBundle mainBundle]
                      pathForResource:@"CTCC clip"
                      ofType:@"mp4"];
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] 
-                                       initWithContentURL:[NSURL fileURLWithPath:url]];
+    if (_player2 == nil) {
+        _player2 = [[MPMoviePlayerController alloc] 
+                     initWithContentURL:[NSURL fileURLWithPath:url]];
+        _player2.view.backgroundColor = [UIColor clearColor];
+        _player2.view.frame = CGRectMake(534, 254, 396, 216);
+    }
+    [self.view addSubview:_player2.view];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(movieFinishedCallback:)
                                                  name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:player];
-    
-    player.view.backgroundColor = [UIColor clearColor];
-    player.view.frame = CGRectMake(534, 254, 396, 216);
-    [self.view addSubview:player.view];
-    [player play];
+                                               object:_player2];
+    [_player2 play];
 }
 
 - (void)movieFinishedCallback:(NSNotification*)notification {
@@ -77,7 +79,12 @@
                                                   object:player];
     [player stop];
     [player.view removeFromSuperview];
-    [player autorelease];
+}
+
+- (void)dealloc {
+    [_player1 release];
+    [_player2 release];
+    [super dealloc];
 }
 
 @end
