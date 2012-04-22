@@ -32,6 +32,7 @@
 #import "TKCoverflowView.h"
 #import "TKCoverflowCoverView.h"
 #import "TKGlobal.h"
+#import "Constants.h"
 
 #define COVER_SPACING 70.0
 #define CENTER_COVER_OFFSET 70
@@ -54,6 +55,9 @@
 - (void) placeAlbumAtIndex:(int)cnt;
 - (void) snapToAlbum:(BOOL)animated;
 
+- (void)doubleTapped;
+- (void)singleTapped;
+
 @end
 
 #pragma mark -
@@ -64,10 +68,10 @@
 - (void) setupTransforms{
 
 	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
-	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -300));
+	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -COVER_FLOW_ITEM_HEIGHT));
 	
 	rightTransform = CATransform3DMakeRotation(-coverAngle, 0, 1, 0);
-	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -300));
+	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -COVER_FLOW_ITEM_HEIGHT));
 	
 }
 - (void) load{
@@ -95,8 +99,7 @@
 	currentSize = self.frame.size;
 	
 }
-- (void) setup{
-
+- (void)setup {
 	currentIndex = -1;
 	for(UIView *v in views) [v removeFromSuperview];
 	[yard removeAllObjects];
@@ -127,19 +130,18 @@
 
 	[self newrange];
 	[self animateToIndex:currentIndex animated:NO];
-	
 }
 
 
 #pragma mark Manage Visible Covers
-- (void) deplaceAlbumsFrom:(int)start to:(int)end{
+- (void)deplaceAlbumsFrom:(int)start to:(int)end {
 	if(start >= end) return;
 	
 	for(int cnt=start;cnt<end;cnt++)
 		[self deplaceAlbumsAtIndex:cnt];
-
 }
-- (void) deplaceAlbumsAtIndex:(int)cnt{
+
+- (void)deplaceAlbumsAtIndex:(int)cnt {
 	if(cnt >= [coverViews count]) return;
 	
 	if([coverViews objectAtIndex:cnt] != [NSNull null]){
@@ -152,13 +154,17 @@
 		
 	}
 }
-- (BOOL) placeAlbumsFrom:(int)start to:(int)end{
-	if(start >= end) return NO;
-	for(int cnt=start;cnt<= end;cnt++) 
-		[self placeAlbumAtIndex:cnt];
+
+- (BOOL)placeAlbumsFrom:(int)start to:(int)end {
+	if (start >= end)
+        return NO;
+    for (int cnt=start; cnt<=end; cnt++) {
+        [self placeAlbumAtIndex:cnt];
+    }
 	return YES;
 }
-- (void) placeAlbumAtIndex:(int)cnt{
+
+- (void)placeAlbumAtIndex:(int)cnt {
 	if(cnt >= [coverViews count]) return;
 	
 	if([coverViews objectAtIndex:cnt] == [NSNull null]){
@@ -271,6 +277,17 @@
 	
 }
 
+
+- (void)doubleTapped {
+    if ([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasDoubleTapped:)])
+        [self.coverflowDelegate coverflowView:self coverAtIndexWasDoubleTapped:currentIndex];
+}
+
+- (void)singleTapped {
+    if ([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTapped:)])
+        [self.coverflowDelegate coverflowView:self coverAtIndexWasTapped:currentIndex];
+}
+
 @end
 
 
@@ -287,45 +304,32 @@
 
 
 - (void) layoutSubviews{
-	
-	if(self.frame.size.width == currentSize.width && self.frame.size.height == currentSize.height) return;
+	if (self.frame.size.width == currentSize.width && self.frame.size.height == currentSize.height)
+        return;
 	currentSize = self.frame.size;
-	
-	
-
 	
 	margin = (self.frame.size.width / 2);
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	coverBuffer = (int)((currentSize.width - coverSize.width) / coverSpacing) + 3;
 	
-	
-
-	for(UIView *v in views){
+	for (UIView *v in views) {
 		v.layer.transform = CATransform3DIdentity;
 		CGRect r = v.frame;
 		r.origin.y = currentSize.height / 2 - (coverSize.height/2) - (coverSize.height/16);
 		v.frame = r;
-
 	}
 
-	for(int i= deck.location; i < deck.location + deck.length; i++){
-		
-		if([coverViews objectAtIndex:i] != [NSNull null]){
+	for (int i=deck.location; i<deck.location+deck.length; i++) {
+		if ([coverViews objectAtIndex:i] != [NSNull null]) {
 			UIView *cover = [coverViews objectAtIndex:i];
 			CGRect r = cover.frame;
 			r.origin.x = (currentSize.width/2 - (coverSize.width/ 2)) + (coverSpacing) * i;
 			cover.frame = r;
 		}
 	}
-	
-
-
 	[self newrange];
 	[self animateToIndex:currentIndex animated:NO];
-	
-
 }
-
 
 #pragma mark Public Methods
 - (TKCoverflowCoverView *) coverAtIndex:(int)index{
@@ -345,6 +349,7 @@
 	[self newrange];
 	[self animateToIndex:index animated:animated];
 }
+
 - (TKCoverflowCoverView*) dequeueReusableCoverView{
 	
 	if([yard count] < 1)  return nil;
@@ -363,43 +368,35 @@
 	if(touch.view != self &&  [touch locationInView:touch.view].y < coverSize.height){
 		currentTouch = touch.view;
 	}
-
 }
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
 	if (touch.view == currentTouch) {
 		if(currentIndex == [coverViews indexOfObject:currentTouch]) {
-            if (touch.tapCount == 1) {
-                if ([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTapped:)])
-                    [self.coverflowDelegate coverflowView:self coverAtIndexWasTapped:currentIndex];
-            }
-            else if (touch.tapCount > 1) {
-                if ([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasDoubleTapped:)])
-                    [self.coverflowDelegate coverflowView:self coverAtIndexWasDoubleTapped:currentIndex];
+            if (touch.tapCount == 2) {
+                [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapped) object:nil];
+                [self doubleTapped];
 			}
+            else if (touch.tapCount == 1) {
+                [self performSelector:@selector(singleTapped) withObject:nil afterDelay:0.3];
+            }
 		}
         else {
 			int index = [coverViews indexOfObject:currentTouch];
 			[self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
 		}
-		
-
 	}
-	
-
-	
 	currentTouch = nil;
 }
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	if(currentTouch!= nil) currentTouch = nil;
 }
 
 #pragma mark UIScrollView Delegate
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    
-	
-	velocity = abs(pos - scrollView.contentOffset.x);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    velocity = abs(pos - scrollView.contentOffset.x);
 	pos = scrollView.contentOffset.x;
 	movingRight = self.contentOffset.x - origin > 0 ? YES : NO;
 	origin = self.contentOffset.x;
@@ -422,15 +419,16 @@
 	
 	if(velocity < 180 || currentIndex < 15 || currentIndex > (numberOfCovers - 16))
 		[self animateToIndex:index animated:YES];
-	
 }
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	if(!scrollView.tracking && !scrollView.decelerating){
 		[self snapToAlbum:YES];
 		[self adjustViewHeirarchy];
 	} 
 }
-- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	if(!self.decelerating && !decelerate){
 		[self snapToAlbum:YES];
 		[self adjustViewHeirarchy];
@@ -439,7 +437,7 @@
 
 
 #pragma mark Properties
-- (void) setNumberOfCovers:(int)cov{
+- (void)setNumberOfCovers:(int)cov {
 	numberOfCovers = cov;
 	[self setup];
 }

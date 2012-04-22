@@ -32,7 +32,7 @@
 #import "TKCoverflowCoverView.h"
 #import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
-
+#import "Constants.h"
 
 
 
@@ -67,7 +67,7 @@
 }
 
 
-- (void) setImage:(UIImage *)img{
+- (void)setImage:(UIImage *)img {
 	
 	UIImage *image = img;
 	
@@ -87,17 +87,14 @@
 	reflected.frame = CGRectMake(0, y + h, w, h);
 	reflected.image = image;
 }
-- (UIImage*) image{
+
+- (UIImage *)image {
 	return imageView.image;
 }
-- (void) setBaseline:(float)f{
+
+- (void)setBaseline:(float)f {
 	baseline = f;
 	[self setNeedsDisplay];
 }
-
-
-
-
-
 
 @end
