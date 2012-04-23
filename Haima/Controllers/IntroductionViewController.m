@@ -10,6 +10,7 @@
 #import "BrandHistoryViewController.h"
 #import "UserGroupViewController.h"
 #import "ProductAdvantageViewController.h"
+#import "UIController.h"
 
 @implementation IntroductionViewController
 
@@ -35,9 +36,23 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self touchDownAtItemAtIndex:0];
+}
+
 - (void)dealloc
 {
     [super dealloc];
+}
+
+- (void)touchDownAtItemAtIndex:(NSUInteger)itemIndex {
+    if (itemIndex == 2)
+        [[UIController sharedUIController] hideBackgroundImage];
+    else
+        [[UIController sharedUIController] showBackgroundImage];
+    
+    [super touchDownAtItemAtIndex:itemIndex];
 }
 
 @end

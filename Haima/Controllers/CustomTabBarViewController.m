@@ -15,6 +15,8 @@
 #import "PromotionViewController.h"
 #import "ExperienceViewController.h"
 #import "CustomizationViewController.h"
+#import "BackgroundView.h"
+#import "UIController.h"
 
 #define SELECTED_VIEW_CONTROLLER_TAG 98456345
 
@@ -61,7 +63,8 @@ static NSArray* tabBarItems = nil;
 
 - (void)loadView
 {
-    UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    BackgroundView *background = [[BackgroundView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    background.backgroundColor = [UIColor clearColor];
     self.view = background;
     [background release];
 
@@ -90,6 +93,12 @@ static NSArray* tabBarItems = nil;
 
 - (void)touchDownAtItemAtIndex:(NSUInteger)itemIndex
 {
+    if (itemIndex == 7)
+        [[UIController sharedUIController] hideBackgroundImage];
+    else
+        [[UIController sharedUIController] showBackgroundImage];
+    
+    
     // Remove the current view controller's view
     UIView* currentView = [self.view viewWithTag:SELECTED_VIEW_CONTROLLER_TAG];
     [currentView removeFromSuperview];
@@ -110,8 +119,7 @@ static NSArray* tabBarItems = nil;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft
-            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 - (void)dealloc

@@ -50,7 +50,7 @@
 }
 
 - (void)viewDidLoad {
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://haima.com/hk/news.asp"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 }

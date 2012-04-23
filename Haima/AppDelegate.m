@@ -10,6 +10,7 @@
 #import "BackgroundViewController.h"
 #import "CustomTabBarViewController.h"
 #import "CalculatorViewController.h"
+#import "Constants.h"
 
 @implementation AppDelegate
 
@@ -32,16 +33,11 @@
     [vc release];
     
     BackgroundViewController *bvc = [[BackgroundViewController alloc] init];
+    bvc.view.tag = APP_BACKGROUND_VIEW_TAG;
     [self.window insertSubview:bvc.view atIndex:0];
     [bvc release];
     
     [self.window makeKeyAndVisible];
-    
-    // pre-initialize html views
-    CalculatorViewController *vc2 = [[[CalculatorViewController alloc] init] autorelease];
-    UIView *view = vc2.view;
-    NSLog(@"%@", view);
-    
     return YES;
 }
 

@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#define APP_BACKGROUND_VIEW_TAG 1
+#define APP_UNITY_VIEW_TAG 2
+
 #define TIME_ENTRY_TIME_OFFSET_PREFIX 11
 #define TIME_ENTRY_TIME_OFFSET_SUFFIX 29
 #define TIME_ENTRY_PIXELS_PER_TIME_OFFSET 18

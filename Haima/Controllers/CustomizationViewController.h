@@ -17,6 +17,7 @@
     UIImageView *_previewImageView;
     UIScrollView *_mySelectionView;
     NSMutableArray *_mySelection;
+    UILabel *_selectionLabel;
 }
 
 @property (retain,nonatomic) TKCoverflowView *coverflow; 

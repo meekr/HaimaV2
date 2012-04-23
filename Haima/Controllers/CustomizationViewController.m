@@ -41,15 +41,40 @@
     _coverflow.coverSize = CGSizeMake(COVER_FLOW_ITEM_WIDTH, COVER_FLOW_ITEM_HEIGHT);
 	[self.view addSubview:_coverflow];
     
-    _mySelectionView = [[UIScrollView alloc] initWithFrame:CGRectMake(400, 500, 624, 160)];
-    _mySelectionView.backgroundColor = [UIColor yellowColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 580, 395, 20)];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = @"已选择：";
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = UITextAlignmentRight;
+    label.font = [UIFont boldSystemFontOfSize:15];
+    [self.view addSubview:label];
+    [label release];
+    
+    _mySelectionView = [[UIScrollView alloc] initWithFrame:CGRectMake(400, 495, 614, 172)];
     [self.view addSubview:_mySelectionView];
     [_mySelectionView addGestureRecognizer:_selectionDoubleTapGesture];
+    
+    UIImage *selectionBgImage = [[UIImage imageNamed:@"custom-selection-bg"] stretchableImageWithLeftCapWidth:12 topCapHeight:18];
+    UIImageView *selectionBg = [[UIImageView alloc] initWithImage:selectionBgImage];
+    selectionBg.frame = CGRectMake(_mySelectionView.frame.origin.x-10,
+                                   _mySelectionView.frame.origin.y,
+                                   _mySelectionView.frame.size.width+20,
+                                   _mySelectionView.frame.size.height);
+    [self.view insertSubview:selectionBg belowSubview:_mySelectionView];
+    [selectionBg release];
     
     _previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
     _previewImageView.userInteractionEnabled = YES;
     _previewImageView.alpha = 0;
     [self.view addSubview:_previewImageView];
+    
+    _selectionLabel = [[UILabel alloc] initWithFrame:_mySelectionView.frame];
+    _selectionLabel.backgroundColor = [UIColor clearColor];
+    _selectionLabel.text = @"您还没有任何选中选配，双击上面大图添加选配到此框";
+    _selectionLabel.textColor = [UIColor colorWithWhite:1 alpha:.7];
+    _selectionLabel.textAlignment = UITextAlignmentCenter;
+    _selectionLabel.font = [UIFont systemFontOfSize:17];
+    [self.view addSubview:_selectionLabel];
     
     
     _mySelection = [[NSMutableArray alloc] init];
@@ -154,6 +179,7 @@
 }
 
 - (void)layoutMySelection {
+    _selectionLabel.alpha = _mySelection.count>0 ? 0 : 1;
     float targetWidth = MAX((_mySelection.count)*(SELECTION_ITEM_WIDTH+10)+10, _mySelectionView.frame.size.width);
     
     for (int i=0; i<_mySelection.count; i++) {
@@ -174,6 +200,7 @@
     [_covers release];
     [_mySelection release];
     [_mySelectionView release];
+    [_selectionLabel release];
     [super dealloc];
 }
 
