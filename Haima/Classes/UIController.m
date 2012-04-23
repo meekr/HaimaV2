@@ -20,13 +20,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(UIController);
     UIView *view = [window viewWithTag:APP_BACKGROUND_VIEW_TAG];
     if (view)
         view.alpha = 1;
+    
+    UIView *v = [window viewWithTag:APP_UNITY_VIEW_TAG];
+    if (v) {
+        v.exclusiveTouch = NO;
+        v.multipleTouchEnabled = NO;
+        v.hidden = YES;
+    }
 }
 
 - (void)hideBackgroundImage {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:APP_BACKGROUND_VIEW_TAG];
     if (view)
-        view.alpha = 0;    
+        view.alpha = 0;
+    
+    UIView *v = [window viewWithTag:APP_UNITY_VIEW_TAG];
+    if (v) {
+        v.exclusiveTouch = YES;
+        v.multipleTouchEnabled = YES;
+        v.hidden = NO;
+    }
 }
 
 @end

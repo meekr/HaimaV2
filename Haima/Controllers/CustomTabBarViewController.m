@@ -64,7 +64,6 @@ static NSArray* tabBarItems = nil;
 - (void)loadView
 {
     BackgroundView *background = [[BackgroundView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
-    background.backgroundColor = [UIColor clearColor];
     self.view = background;
     [background release];
 

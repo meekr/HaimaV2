@@ -7,14 +7,32 @@
 //
 
 #import "BackgroundView.h"
+#import "Constants.h"
 
 @implementation BackgroundView
+
+- (void)setup {
+    self.backgroundColor = [UIColor clearColor];
+    self.multipleTouchEnabled = YES;
+}
+
+- (id)init {
+    if (self = [super init])
+        [self setup];
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame])
+        [self setup];
+    return self;
+}
 
 - (UIView *)unityView {
     if (_unityView == nil) {
         UIWindow *window = [[UIApplication sharedApplication] keyWindow];
         for (UIView *view in window.subviews) {
-            if (view.tag == 1) {
+            if (view.tag == APP_UNITY_VIEW_TAG) {
                 _unityView = view;
                 break;
             }

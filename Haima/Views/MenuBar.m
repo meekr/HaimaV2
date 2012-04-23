@@ -24,7 +24,7 @@
     if (self = [super init])
     {
         // The tag allows callers withe multiple controls to distinguish between them
-        self.tag = objectTag;
+//        self.tag = objectTag;
         
         // Set the delegate
         delegate = menuBarDelegate;

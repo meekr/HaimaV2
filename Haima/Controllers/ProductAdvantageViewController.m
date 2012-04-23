@@ -27,7 +27,7 @@
     bg.alpha = 0.08;
     [self.view addSubview:bg];
     [bg release];
-
+    
     // navigate home
     bgImage = [UIImage imageNamed:@"product-navigate-bg"];
     self.homeScreen = [[[UIView alloc] initWithFrame:CGRectMake(240, 170, bgImage.size.width, bgImage.size.height)] autorelease];
@@ -102,6 +102,7 @@
 
 - (void)presentFeatureMenu
 {
+    UIView *bg = [self.view.subviews objectAtIndex:0];
     [UIView animateWithDuration:.2
                           delay:0
                         options:UIViewAnimationCurveEaseInOut
@@ -109,6 +110,7 @@
                          self.homeScreen.alpha = 0;
                          self.featureMenu.alpha = 1;
                          self.featureMenu.frame = CGRectMake(0, self.featureMenu.frame.origin.y, self.featureMenu.frame.size.width, self.featureMenu.frame.size.height);
+                         bg.alpha = 0;
                      }
                      completion:^(BOOL finished){
                      }];
@@ -167,6 +169,7 @@
 {
     [self closeDetailAction:nil];
     
+    UIView *bg = [self.view.subviews objectAtIndex:0];
     [UIView animateWithDuration:.2
                           delay:0
                         options:UIViewAnimationCurveEaseInOut
@@ -174,6 +177,8 @@
                          self.homeScreen.alpha = 1;
                          self.featureMenu.alpha = 0;
                          self.featureMenu.frame = CGRectMake(280, self.featureMenu.frame.origin.y, self.featureMenu.frame.size.width, self.featureMenu.frame.size.height);
+                         
+                         bg.alpha = 0.08;
                      }
                      completion:^(BOOL finished){
                      }];

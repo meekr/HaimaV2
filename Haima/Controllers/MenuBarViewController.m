@@ -30,19 +30,14 @@
     UIView *background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)];
     self.view = background;
     [background release];
-    
-    _menuBar.frame = CGRectMake(0, self.view.frame.size.height-26, self.view.frame.size.width, 26);
-    //_menuBar.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:_menuBar];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Select the first tab
-//    [_menuBar selectItemAtIndex:0];
-//    [self touchDownAtItemAtIndex:0];
+    _menuBar.frame = CGRectMake(0, self.view.frame.size.height-26, self.view.frame.size.width, 26);
+    [self.view addSubview:_menuBar];
 }
 
 #pragma mark -

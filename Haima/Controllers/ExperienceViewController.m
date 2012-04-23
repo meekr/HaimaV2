@@ -7,6 +7,7 @@
 //
 
 #import "ExperienceViewController.h"
+#import "BackgroundView.h"
 
 @implementation ExperienceViewController
 
@@ -39,12 +40,14 @@
 }
 
 - (void)loadView {
-    [super loadView];
+    BackgroundView *background = [[BackgroundView alloc] initWithFrame:CGRectMake(0, 0, 1024, 690)];
+    self.view = background;
+    [background release];
     
     for (int i=1; i<=5; i++) {
         UIButton *button = [[UIButton alloc] init];
         button.frame = CGRectMake(933, 650-i*80, 56, 80);
-        button.tag = i;
+        button.tag = i*10;
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn-%d", i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn-%d-over", i]] forState:UIControlStateHighlighted];
         [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"btn-%d-over", i]] forState:UIControlStateSelected];
@@ -58,11 +61,16 @@
     button.selected = YES;
     for (int i=1; i<=5; i++) {
         if (i != button.tag){
-            UIButton *btn = (UIButton *)[self.view viewWithTag:i];
+            UIButton *btn = (UIButton *)[self.view viewWithTag:i*10];
             btn.selected = NO;
         }
     }
     NSLog(@"click %d", button.tag);
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
 - (void)dealloc
