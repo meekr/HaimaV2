@@ -12,7 +12,11 @@
 @interface CustomizationViewController : UIViewController<TKCoverflowViewDelegate,TKCoverflowViewDataSource>
 {
     UITapGestureRecognizer *_tapGesture;
+    UITapGestureRecognizer *_selectionDoubleTapGesture;
+    NSUInteger _doubleTappedSelectionTag;
     UIImageView *_previewImageView;
+    UIScrollView *_mySelectionView;
+    NSMutableArray *_mySelection;
 }
 
 @property (retain,nonatomic) TKCoverflowView *coverflow; 
